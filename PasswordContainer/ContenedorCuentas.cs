@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PasswordContainer
+{
+    public class ContenedorCuentas
+    {
+        private List<CuentaApp> cuentas;
+
+
+
+
+        public ContenedorCuentas()
+        {
+            cuentas = new List<CuentaApp>();
+        }
+
+
+        public bool Add(CuentaApp cuenta)
+        {
+            if (!Validar.validarCuentaApp(cuenta)) return false;
+            if (EstaCuenta(cuenta)) return false;
+
+            cuentas.Add(cuenta);
+
+            return true;
+        }
+
+
+        public bool remove(CuentaApp cuenta)
+        {
+            if (!Validar.validarCuentaApp(cuenta)) return false;
+            if (!EstaCuenta(cuenta)) return false;
+
+            cuentas.Remove(cuenta);
+
+            return true;
+
+        }
+
+        public CuentaApp[] GetCuentaApps()
+        {
+            cuentas.TrimExcess();
+            CuentaApp[] cuentasTmp = cuentas.ToArray();
+            ordenar(cuentasTmp);
+            return cuentasTmp;
+        }
+
+        private void ordenar(CuentaApp[] cuentas)
+        {
+            CuentaApp aux;
+            for (int i = 0; i < cuentas.Length; i++)
+            {
+                for (int j = 0; j < cuentas.Length; j++)
+                {
+                    if (cuentas[i].CompareTo(cuentas[j]) > 0)
+                    {
+                        aux = cuentas[i];
+                        cuentas[i] = cuentas[j];
+                        cuentas[j] = aux;
+                    }
+
+                }
+            }
+        }
+
+
+
+
+        private bool EstaCuenta(CuentaApp cuenta)
+        {
+            return cuentas.Contains(cuenta);
+
+        }
+
+
+       
+    }
+}
