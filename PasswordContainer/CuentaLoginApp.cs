@@ -18,11 +18,6 @@ namespace PasswordContainer
         }
 
 
-        public bool login(Usuario usuario , string password)
-        {
-            return (GetUsuario().Equals(usuario) && this.password.Equals(new PasswordLoginApp(password)));
-        }
-
 
 
 

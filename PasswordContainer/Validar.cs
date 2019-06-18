@@ -10,8 +10,9 @@ namespace PasswordContainer
     {
         public static bool validarCuentaApp(CuentaApp cuenta)
         {
-            return (cuenta.GetPassword() == null || cuenta.DominioCuenta == null || cuenta.GetUsuario() == null) ;
+            return (cuenta.GetPassword().Equals("")  || cuenta.DominioCuenta.Equals("") || cuenta.GetUsuario().Equals("") || cuenta.NombreCuenta.Equals("")) ;
         }
+
 
 
 

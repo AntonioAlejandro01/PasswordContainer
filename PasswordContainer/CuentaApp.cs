@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswordContainer
 {
+    [Serializable]
     public class CuentaApp : Cuenta , IComparable
     {
         public string DominioCuenta { get; set; }
@@ -14,8 +15,9 @@ namespace PasswordContainer
         private PasswordCuenta password;
         
 
-        public CuentaApp(string dominioCuenta,Usuario usuario, PasswordCuenta password) : base(usuario)
+        public CuentaApp(string nombreCuenta,string dominioCuenta,Usuario usuario, PasswordCuenta password) : base(usuario)
         {
+            NombreCuenta = nombreCuenta;
             DominioCuenta = dominioCuenta;
             this.password = password;
         }

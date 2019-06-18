@@ -8,15 +8,36 @@ namespace PasswordContainer
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        private static List<CuentaApp> cuentas;
+
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            fIniciarSesion fIniciar = new fIniciarSesion();
+            int cont = 0;
+            do {
+                Application.Run(fIniciar);
+                cont++;
+            }
+            while (!fIniciar.InicioCorrecto && cont < 6);
+            if (!fIniciar.InicioCorrecto)
+            {
+                //TO DO window with error message
+                return;
+            }
+
+            fMain fmain = new fMain(fIniciar.FilePath);
+            //crear fMain
+            
+
+
         }
+
+
+
+
     }
 }

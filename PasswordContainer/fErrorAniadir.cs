@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PasswordContainer
 {
-    public partial class Main : Form
+    public partial class fErrorAniadir : Form
     {
-        public Main()
+        public fErrorAniadir()
         {
             InitializeComponent();
         }
