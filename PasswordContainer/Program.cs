@@ -3,38 +3,71 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace PasswordContainer
 {
     static class Program
     {
-        private static List<CuentaApp> cuentas;
+        private static CuentaLoginApp user;
 
 
         [STAThread]
         static void Main()
         {
+            CrearCarpeta();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            fIniciarSesion fIniciar = new fIniciarSesion();
-            int cont = 0;
-            do {
-                Application.Run(fIniciar);
-                cont++;
-            }
-            while (!fIniciar.InicioCorrecto && cont < 6);
-            if (!fIniciar.InicioCorrecto)
+
+
+            int intentos = 5;
+            while (!ObtenerUsuario() && --intentos != 0) ;
+            if (intentos == 0)
             {
-                //TO DO window with error message
+                MessageBox.Show("Numero de intentos de iniciar sesión cumplidos.\nAdiós.");
                 return;
             }
 
-            fMain fmain = new fMain(fIniciar.FilePath);
-            //crear fMain
+            fMain fmain = new fMain(user);
+
+
+
+
+
+
+           
             
 
 
         }
+
+        /**
+         * Método que crea la carpetta doande se van a guardar los archivos
+         */
+        private static void CrearCarpeta()
+        {
+            if (Directory.Exists(ManejoFicheros.carpetaUsuariosLogin))
+            {
+                return;
+            }
+            Directory.CreateDirectory(ManejoFicheros.carpetaUsuariosLogin);
+        }
+
+        private static bool ObtenerUsuario()
+        {
+            fIniciarSesion fIniciar = new fIniciarSesion();
+            Application.Run(fIniciar);
+            if (!BufferCuentaLogin.HayCuenta)
+            {
+                MessageBox.Show("Error en el inicio de sesión.");
+                return false;
+            }
+            user = BufferCuentaLogin.ExtraerCuentaLoginApp();
+            return true;
+        }
+
+
+        
 
 
 

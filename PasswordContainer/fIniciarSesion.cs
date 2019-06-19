@@ -16,6 +16,8 @@ namespace PasswordContainer
         public bool InicioCorrecto { get; private set; }
         public string FilePath { get; private set; }
 
+        public bool NuevoRegistro { get; private set; }
+
         public fIniciarSesion()
         {
             InitializeComponent();
@@ -37,24 +39,21 @@ namespace PasswordContainer
 
         private void BtnSign_Click(object sender, EventArgs e)
         {
-            CuentaLoginApp cuentaSesion = new CuentaLoginApp(new Usuario(txtUser.Text), new PasswordLoginApp(txtPassword.Text));
-            string file = ManejoFicheros.LoginOnApp(cuentaSesion);
+            
+            CuentaLoginApp cuentaSesion = new CuentaLoginApp(new Usuario(txtUser.Text), new PasswordLoginApp(txtPassword.Text), null);
+            cuentaSesion = ManejoFicheros.LoginOnApp(cuentaSesion);
 
-            if (file == null)
-            {
-                InicioCorrecto = false;
-                FilePath = file;
+
+            if (cuentaSesion.Fichero == null)
+            { 
+                Close();
                 return;
             }
-            InicioCorrecto = true;
-            FilePath = file;
+            BufferCuentaLogin.aniadirCuenta(cuentaSesion);
+            Close();
+            
         }
 
-        private void mostrarError()
-        {
-            throw new NotImplementedException();
-
-        }
 
         private void LnkPassOlvidada_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -63,6 +62,7 @@ namespace PasswordContainer
 
         private void LnkRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            NuevoRegistro = true;
 
         }
     }

@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PasswordContainer
 {
     class ManejoFicheros
     {
 
+        public static string carpetaUsuariosLogin = "%ProgramFiles%/ContainerPassword";
+        private static string nombreFicheroLogin = "UsuariosLogin.dat";
 
 
-
-        public static List<CuentaApp> LeerCuentasApp(string file)
+        public static ContenedorCuentas CargarCuentasApp(CuentaLoginApp user)
         {
             throw new NotImplementedException();
 
@@ -22,16 +25,46 @@ namespace PasswordContainer
 
         public static bool GuardarCuentasApp(List<CuentaApp> cuentas, string file)
         {
-
-            throw new NotImplementedException();
+            return false;
 
         }
 
-
-        public static string LoginOnApp(CuentaLoginApp cuentaSesion)
+        /**
+         *returns string con el nombre del fichero donde estan guardadas las cuentas de cada usuario y null si no existe el usuario o no es valida la password 
+         */
+        public static CuentaLoginApp LoginOnApp(CuentaLoginApp cuentaSesion)
         {
-            throw new NotImplementedException();
+            return cuentaSesion;
+
         }
+
+        private static List<CuentaLoginApp> CargarCuentasLogin()
+        {
+            FileStream fs = new FileStream(carpetaUsuariosLogin + "/" + nombreFicheroLogin, FileMode.Open);
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            List<CuentaLoginApp> cuentas = binaryFormatter.Deserialize(fs) as List<CuentaLoginApp>;
+            fs.Close();
+            return cuentas;
+        } 
+
+
+        private static bool GuardarCuentasLogin(List<CuentaLoginApp> cuentas)
+        {
+            try
+            {
+                Stream SaveFileStream = File.Create(carpetaUsuariosLogin + "/" + nombreFicheroLogin);
+                BinaryFormatter serializer = new BinaryFormatter();
+                serializer.Serialize(SaveFileStream, cuentas);
+                SaveFileStream.Close();
+                return true;
+            }
+            catch (Exception) { }
+            return false;
+
+
+
+        }
+
 
 
 

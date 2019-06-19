@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace PasswordContainer
 {
-    class CuentaLoginApp : Cuenta 
+    public class CuentaLoginApp : Cuenta 
     {
         private PasswordLoginApp password;
+        public string Fichero { get; private set; }
 
 
 
-        public CuentaLoginApp(Usuario usuario, PasswordLoginApp password) : base(usuario)
+        public CuentaLoginApp(Usuario usuario, PasswordLoginApp password, string fichero) : base(usuario)
         {
             this.password = password;
+            Fichero = fichero;
         }
+
 
 
 

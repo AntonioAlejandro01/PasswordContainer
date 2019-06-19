@@ -16,10 +16,11 @@ namespace PasswordContainer
         private ContenedorCuentas cuentas;
 
 
-        public fMain(string file)
-        {   
+        public fMain(CuentaLoginApp cuenta)
+        {
+            cuentas = ManejoFicheros.CargarCuentasApp(cuenta);
             InitializeComponent();
-            cuentas = new ContenedorCuentas();
+            
         }
 
         private void BtnAniadir_Click(object sender, EventArgs e)
