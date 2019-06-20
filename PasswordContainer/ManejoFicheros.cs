@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PasswordContainer
 {
-    class ManejoFicheros
+    public static class ManejoFicheros
     {
 
         public static string carpetaUsuariosLogin = "%ProgramFiles%/ContainerPassword";
@@ -63,6 +63,12 @@ namespace PasswordContainer
 
 
 
+        }
+
+        public static bool RegistrarCuenta(CuentaLoginApp cuenta)
+        {
+            //comprobar si esta repetido el nombre de usuario en ese caso devuleve falso. Si no se reptie devuleve true
+            return false;
         }
 
 

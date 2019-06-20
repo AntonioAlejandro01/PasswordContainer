@@ -35,14 +35,15 @@ namespace PasswordContainer
 
 
 
-           
-            
 
 
+
+
+            Application.Exit();
         }
 
         /**
-         * Método que crea la carpetta doande se van a guardar los archivos
+         * Método que crea la carpeta doande se van a guardar los archivos
          */
         private static void CrearCarpeta()
         {

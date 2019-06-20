@@ -13,10 +13,6 @@ namespace PasswordContainer
     public partial class fIniciarSesion : Form
     {
 
-        public bool InicioCorrecto { get; private set; }
-        public string FilePath { get; private set; }
-
-        public bool NuevoRegistro { get; private set; }
 
         public fIniciarSesion()
         {
@@ -62,7 +58,17 @@ namespace PasswordContainer
 
         private void LnkRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            NuevoRegistro = true;
+            fRegistrarUsuario fRegistrarUsuario = new fRegistrarUsuario();
+            fRegistrarUsuario.ShowDialog();
+            CuentaLoginApp cuentaNueva = BufferCuentaLogin.ExtraerCuentaLoginApp();
+            if(cuentaNueva == null|| cuentaNueva.Fichero == null)
+            {
+                Close();
+                return;
+            }
+            BufferCuentaLogin.aniadirCuenta(cuentaNueva);
+            Close();
+
 
         }
     }
