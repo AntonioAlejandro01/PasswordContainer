@@ -23,7 +23,7 @@ namespace PasswordContainer
 
 
 
-        public static bool GuardarCuentasApp(List<CuentaApp> cuentas, string file)
+        public static bool GuardarCuentaApp(List<CuentaApp> cuentas, string file)
         {
             return false;
 

@@ -18,7 +18,7 @@ namespace PasswordContainer
 
         public fMain(CuentaLoginApp cuenta)
         {
-            cuentas = ManejoFicheros.CargarCuentasApp(cuenta);
+            //cuentas = ManejoFicheros.CargarCuentasApp(cuenta);
             InitializeComponent();
             
         }
@@ -26,9 +26,27 @@ namespace PasswordContainer
         private void BtnAniadir_Click(object sender, EventArgs e)
         {
             fAniadir fAniadir = new fAniadir();
-            Application.Run(fAniadir);
+            fAniadir.ShowDialog();
+            if (!BufferCuentaApp.HayCuenta)
+            { 
+                return;
+            }
+            cuentas.Add(BufferCuentaApp.extraerCuentaApp());
+
         }
 
-        
+        private void FMain_Load(object sender, EventArgs e)
+        {
+            listarCuentas();
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            FMain_Load(sender, e);
+        }
+        private void listarCuentas()
+        {
+           //introducir en contenedor de cuentas en el listView
+        }
     }
 }

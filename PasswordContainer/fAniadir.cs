@@ -29,17 +29,26 @@ namespace PasswordContainer
             if (!Validar.validarCuentaApp(cuenta))
             {
                 txtPassword.Clear();
-                Application.Run(new fErrorAniadir());
+                MessageBox.Show("Error al procesar la cuenta.\nAlgunos Campos vacios.");
+                return;
+            }
+
+            BufferCuentaApp.aniadirCuentaApp(cuenta);
+            Close();
+        
+        }
+
+        private void BtnVer_Click(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
+            if (txtPassword.UseSystemPasswordChar)
+            {
+                btnVer.FlatAppearance.BorderSize = 0;
             }
             else
             {
-               
-
+                btnVer.FlatAppearance.BorderSize = 1;
             }
-
-
         }
-
-       
     }
 }

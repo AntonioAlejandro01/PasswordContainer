@@ -39,6 +39,8 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.pictureCaja = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnVer = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCaja)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,9 +57,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(31, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 16);
+            this.label1.Size = new System.Drawing.Size(138, 16);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Nombre de la cuenta";
+            this.label1.Text = "Nombre de la cuenta*";
             // 
             // label2
             // 
@@ -65,9 +67,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(31, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(236, 16);
+            this.label2.Size = new System.Drawing.Size(241, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Tipo de Cuenta(facebook,Instagram...)";
+            this.label2.Text = "Tipo de Cuenta(facebook,Instagram...)*";
             // 
             // label3
             // 
@@ -75,9 +77,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(31, 170);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 16);
+            this.label3.Size = new System.Drawing.Size(60, 16);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Usuario";
+            this.label3.Text = "Usuario*";
             // 
             // txtDominio
             // 
@@ -99,18 +101,18 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(31, 237);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 16);
+            this.label4.Size = new System.Drawing.Size(82, 16);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Contraseña";
+            this.label4.Text = "Contraseña*";
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(34, 257);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(269, 22);
             this.txtPassword.TabIndex = 7;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // pictureCaja
             // 
@@ -134,11 +136,33 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
+            // btnVer
+            // 
+            this.btnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVer.Location = new System.Drawing.Point(310, 257);
+            this.btnVer.Name = "btnVer";
+            this.btnVer.Size = new System.Drawing.Size(37, 23);
+            this.btnVer.TabIndex = 10;
+            this.btnVer.Text = "Ver";
+            this.btnVer.UseVisualStyleBackColor = true;
+            this.btnVer.Click += new System.EventHandler(this.BtnVer_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(34, 313);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "(*) Campos Obligatorios";
+            // 
             // fAniadir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 338);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnVer);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.pictureCaja);
             this.Controls.Add(this.txtPassword);
@@ -172,5 +196,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.PictureBox pictureCaja;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnVer;
+        private System.Windows.Forms.Label label5;
     }
 }

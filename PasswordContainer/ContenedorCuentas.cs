@@ -76,6 +76,16 @@ namespace PasswordContainer
 
         }
 
+        public int size()
+        {
+            return cuentas.Count;
+        }
+
+        public bool isEmpty()
+        {
+            return cuentas.Count == 0;
+        }
+
 
        
     }

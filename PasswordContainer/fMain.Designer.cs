@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
             this.tableContenedor = new System.Windows.Forms.TableLayoutPanel();
-            this.tableCuentas = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAniadir = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -39,6 +38,8 @@
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.LVCuentas = new System.Windows.Forms.ListView();
             this.tableContenedor.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,8 +50,8 @@
             this.tableContenedor.ColumnCount = 2;
             this.tableContenedor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.3853F));
             this.tableContenedor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.6147F));
-            this.tableContenedor.Controls.Add(this.tableCuentas, 0, 0);
             this.tableContenedor.Controls.Add(this.tableLayoutPanel1, 1, 0);
+            this.tableContenedor.Controls.Add(this.LVCuentas, 0, 0);
             this.tableContenedor.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableContenedor.Location = new System.Drawing.Point(12, 87);
             this.tableContenedor.Name = "tableContenedor";
@@ -58,17 +59,6 @@
             this.tableContenedor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.3012F));
             this.tableContenedor.Size = new System.Drawing.Size(901, 605);
             this.tableContenedor.TabIndex = 0;
-            // 
-            // tableCuentas
-            // 
-            this.tableCuentas.ColumnCount = 1;
-            this.tableCuentas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableCuentas.Location = new System.Drawing.Point(6, 6);
-            this.tableCuentas.Name = "tableCuentas";
-            this.tableCuentas.RowCount = 1;
-            this.tableCuentas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.3864F));
-            this.tableCuentas.Size = new System.Drawing.Size(648, 593);
-            this.tableCuentas.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -161,11 +151,32 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Menú";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(590, 58);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(65, 23);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "Refrescar";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
+            // 
+            // LVCuentas
+            // 
+            this.LVCuentas.HideSelection = false;
+            this.LVCuentas.Location = new System.Drawing.Point(6, 6);
+            this.LVCuentas.Name = "LVCuentas";
+            this.LVCuentas.Size = new System.Drawing.Size(648, 593);
+            this.LVCuentas.TabIndex = 2;
+            this.LVCuentas.UseCompatibleStateImageBehavior = false;
+            this.LVCuentas.View = System.Windows.Forms.View.List;
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 713);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableContenedor);
@@ -175,6 +186,7 @@
             this.Name = "fMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baúl de Contraseñas";
+            this.Load += new System.EventHandler(this.FMain_Load);
             this.tableContenedor.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -185,7 +197,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableContenedor;
-        private System.Windows.Forms.TableLayoutPanel tableCuentas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnAniadir;
@@ -194,6 +205,8 @@
         private System.Windows.Forms.Button btnDocumento;
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.ListView LVCuentas;
     }
 }
 
