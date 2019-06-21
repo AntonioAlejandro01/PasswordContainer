@@ -11,7 +11,7 @@ namespace PasswordContainer
     public static class ManejoFicheros
     {
 
-        public static string carpetaUsuariosLogin = "%ProgramFiles%/ContainerPassword";
+        public static string carpetaUsuariosLogin = "ContainerPassword";
         private static string nombreFicheroLogin = "UsuariosLogin.dat";
 
 
@@ -69,6 +69,11 @@ namespace PasswordContainer
         {
             //comprobar si esta repetido el nombre de usuario en ese caso devuleve falso. Si no se reptie devuleve true
             return false;
+        }
+
+        public static void generartxtCuentas()
+        {
+            throw new NotImplementedException();
         }
 
 

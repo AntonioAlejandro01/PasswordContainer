@@ -15,19 +15,19 @@ namespace PasswordContainer
         [STAThread]
         static void Main()
         {
-            CrearCarpeta();
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            /*
+            CrearCarpeta();
             int intentos = 5;
             while (!ObtenerUsuario() && --intentos != 0) ;
             if (intentos == 0)
             {
                 MessageBox.Show("Numero de intentos de iniciar sesión cumplidos.\nAdiós.");
-                return;
+                //return;
             }
-            */
+           
 
             Application.Run(new fMain(user));
             Application.Exit();
@@ -42,7 +42,7 @@ namespace PasswordContainer
             {
                 return;
             }
-            Directory.CreateDirectory(ManejoFicheros.carpetaUsuariosLogin);
+            Directory.CreateDirectory("C:\\Users\\anton\\Desktop");
         }
 
         private static bool ObtenerUsuario()

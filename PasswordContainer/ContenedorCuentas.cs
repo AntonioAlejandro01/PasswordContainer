@@ -45,7 +45,7 @@ namespace PasswordContainer
         {
             cuentas.TrimExcess();
             CuentaApp[] cuentasTmp = cuentas.ToArray();
-            ordenar(cuentasTmp);
+            //ordenar(cuentasTmp);
             return cuentasTmp;
         }
 

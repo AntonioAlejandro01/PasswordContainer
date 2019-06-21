@@ -57,5 +57,10 @@ namespace PasswordContainer
         {
             return DominioCuenta.CompareTo(obj);
         }
+
+        public override string ToString()
+        {
+            return DominioCuenta.ToUpper() + "\n"+GetUsuario().User + "\n" + GetPassword();
+        }
     }
 }
