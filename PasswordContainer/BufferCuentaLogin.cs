@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswordContainer
 {
-    static class BufferCuentaLogin
+    public static class BufferCuentaLogin
     {
 
         private static CuentaLoginApp cuentaLogin;

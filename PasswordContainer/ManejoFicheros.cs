@@ -34,7 +34,13 @@ namespace PasswordContainer
          */
         public static CuentaLoginApp LoginOnApp(CuentaLoginApp cuentaSesion)
         {
-            return cuentaSesion;
+            //prueba
+            if (cuentaSesion.Equals(new CuentaLoginApp(new Usuario("antonio"), new PasswordLoginApp("antonio"), "")))
+            {
+                return cuentaSesion;
+            }
+            return null;
+        
 
         }
 

@@ -9,11 +9,11 @@ namespace PasswordContainer
 {
     static class Program
     {
-        private static CuentaLoginApp user;
+        private static CuentaLoginApp user = new CuentaLoginApp(new Usuario("antonio"),new PasswordLoginApp("antonio"),"");
 
 
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             
             Application.EnableVisualStyles();
@@ -21,11 +21,21 @@ namespace PasswordContainer
 
             CrearCarpeta();
             int intentos = 5;
-            while (!ObtenerUsuario() && --intentos != 0) ;
+            bool inicioSesion = false;
+            while (!ObtenerUsuario() && --intentos != 0 && !inicioSesion)
+            {
+                user = ManejoFicheros.LoginOnApp(user);
+                inicioSesion = (user == null);
+                if (!inicioSesion)
+                {
+                    MessageBox.Show("Error. \nUsuario o contraseña incorrecta");
+                }
+
+            }
             if (intentos == 0)
             {
                 MessageBox.Show("Numero de intentos de iniciar sesión cumplidos.\nAdiós.");
-                //return;
+                return;
             }
            
 
@@ -51,7 +61,6 @@ namespace PasswordContainer
             Application.Run(fIniciar);
             if (!BufferCuentaLogin.HayCuenta)
             {
-                MessageBox.Show("Error en el inicio de sesión.");
                 return false;
             }
             user = BufferCuentaLogin.ExtraerCuentaLoginApp();

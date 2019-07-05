@@ -38,7 +38,6 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnVer = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textUser = new System.Windows.Forms.TextBox();
@@ -47,9 +46,11 @@
             this.lblNombreCuenta = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableContenedor.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableContenedor
@@ -141,11 +142,12 @@
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnVer);
-            this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.textUser);
@@ -161,7 +163,7 @@
             // btnVer
             // 
             this.btnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVer.Location = new System.Drawing.Point(444, 293);
+            this.btnVer.Location = new System.Drawing.Point(412, 277);
             this.btnVer.Name = "btnVer";
             this.btnVer.Size = new System.Drawing.Size(36, 26);
             this.btnVer.TabIndex = 6;
@@ -169,21 +171,11 @@
             this.btnVer.UseVisualStyleBackColor = true;
             this.btnVer.Click += new System.EventHandler(this.BtnVer_Click);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(452, 38);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(62, 42);
-            this.btnRefresh.TabIndex = 3;
-            this.btnRefresh.Text = "Refrescar";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(66, 228);
+            this.label5.Location = new System.Drawing.Point(20, 211);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 29);
             this.label5.TabIndex = 4;
@@ -193,7 +185,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(66, 128);
+            this.label4.Location = new System.Drawing.Point(20, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 29);
             this.label4.TabIndex = 3;
@@ -202,7 +194,7 @@
             // textUser
             // 
             this.textUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textUser.Location = new System.Drawing.Point(71, 181);
+            this.textUser.Location = new System.Drawing.Point(25, 164);
             this.textUser.Name = "textUser";
             this.textUser.Size = new System.Drawing.Size(366, 26);
             this.textUser.TabIndex = 2;
@@ -210,7 +202,7 @@
             // textPassword
             // 
             this.textPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textPassword.Location = new System.Drawing.Point(72, 293);
+            this.textPassword.Location = new System.Drawing.Point(26, 276);
             this.textPassword.Name = "textPassword";
             this.textPassword.Size = new System.Drawing.Size(365, 26);
             this.textPassword.TabIndex = 1;
@@ -219,7 +211,7 @@
             // btnSelect
             // 
             this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelect.Location = new System.Drawing.Point(72, 371);
+            this.btnSelect.Location = new System.Drawing.Point(26, 354);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(365, 57);
             this.btnSelect.TabIndex = 5;
@@ -229,10 +221,11 @@
             // 
             // lblNombreCuenta
             // 
-            this.lblNombreCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreCuenta.Location = new System.Drawing.Point(33, 38);
+            this.lblNombreCuenta.AutoSize = true;
+            this.lblNombreCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCuenta.Location = new System.Drawing.Point(3, 29);
             this.lblNombreCuenta.Name = "lblNombreCuenta";
-            this.lblNombreCuenta.Size = new System.Drawing.Size(413, 42);
+            this.lblNombreCuenta.Size = new System.Drawing.Size(128, 39);
             this.lblNombreCuenta.TabIndex = 0;
             this.lblNombreCuenta.Text = "Cuenta";
             // 
@@ -256,6 +249,17 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Menú";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(412, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(156, 160);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +279,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,7 +295,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnDocumento;
         private System.Windows.Forms.Button btnSelect;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -300,6 +304,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnVer;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

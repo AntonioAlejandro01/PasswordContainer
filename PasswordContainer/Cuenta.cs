@@ -22,13 +22,7 @@ namespace PasswordContainer
             return usuario;
         }
 
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Cuenta)) return false;
-
-            Cuenta cuenta = (Cuenta)obj;
-            return usuario.User.Equals(cuenta.GetUsuario());
-        }
+        
 
 
 

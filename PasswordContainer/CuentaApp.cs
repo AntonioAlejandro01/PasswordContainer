@@ -9,16 +9,14 @@ namespace PasswordContainer
     [Serializable]
     public class CuentaApp : Cuenta , IComparable
     {
-        public string DominioCuenta { get; set; }
         public string NombreCuenta { get; set; }
 
         private PasswordCuenta password;
         
 
-        public CuentaApp(string nombreCuenta,string dominioCuenta,Usuario usuario, PasswordCuenta password) : base(usuario)
+        public CuentaApp(string nombreCuenta,Usuario usuario, PasswordCuenta password) : base(usuario)
         {
             NombreCuenta = nombreCuenta;
-            DominioCuenta = dominioCuenta;
             this.password = password;
         }
 
@@ -45,22 +43,22 @@ namespace PasswordContainer
 
             CuentaApp cuentaApp = (CuentaApp)obj;
 
-            return cuentaApp.GetUsuario().User.ToUpper().Equals(GetUsuario().User.ToUpper()) && cuentaApp.DominioCuenta.Equals(DominioCuenta);
+            return cuentaApp.GetUsuario().User.ToUpper().Equals(GetUsuario().User.ToUpper()) && cuentaApp.NombreCuenta.ToUpper().Equals(NombreCuenta.ToUpper());
         }
 
         public override int GetHashCode()
         {
-            return (DominioCuenta.ToUpper() + GetUsuario().User).GetHashCode();
+            return (NombreCuenta.ToUpper() + GetUsuario().User).GetHashCode();
         }
 
         public int CompareTo(object obj)
         {
-            return DominioCuenta.CompareTo(obj);
+            return NombreCuenta.CompareTo(obj);
         }
 
         public override string ToString()
         {
-            return DominioCuenta.ToUpper() + "\n"+GetUsuario().User + "\n" + GetPassword();
+            return NombreCuenta.ToUpper() + "\n"+GetUsuario().User + "\n" + GetPassword();
         }
     }
 }

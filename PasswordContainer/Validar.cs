@@ -8,9 +8,10 @@ namespace PasswordContainer
 {
     public static class Validar
     {
+        public static bool cerrarSesion { get; set; } 
         public static bool validarCuentaApp(CuentaApp cuenta)
         {
-            return (!cuenta.GetPassword().Equals("")  && !cuenta.DominioCuenta.Equals("") && !cuenta.GetUsuario().Equals("") && !cuenta.NombreCuenta.Equals("")) ;
+            return (!cuenta.GetPassword().Equals("")  && !cuenta.GetUsuario().Equals("") && !cuenta.NombreCuenta.Equals("") && !cuenta.GetPassword().Equals("")) ;
         }
 
 

@@ -67,6 +67,18 @@ namespace PasswordContainer
             }
         }
 
+        public bool contains(CuentaApp cuenta)
+        {
+            foreach(CuentaApp cuentaApp in cuentas)
+            {
+                if (cuenta.Equals(cuentaApp))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
 
 

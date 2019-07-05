@@ -20,15 +20,14 @@ namespace PasswordContainer
 
         public static CuentaApp extraerCuentaApp()
         {
-            if (HayCuenta)
+            if (!HayCuenta)
             {
+                return null;
+            }
                 HayCuenta = false;
                 CuentaApp tmp = cuentaBuffered;
                 cuentaBuffered = null;
                 return tmp;
-
-            }
-            return null;
         }
 
 

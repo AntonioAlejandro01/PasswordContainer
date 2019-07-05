@@ -61,10 +61,12 @@
             this.ClientSize = new System.Drawing.Size(565, 375);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lstbNombresCuentas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "fSeleccionar";
-            this.Text = "Selección";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Selección Cuenta";
             this.Load += new System.EventHandler(this.FSeleccionar_Load);
             this.ResumeLayout(false);
 

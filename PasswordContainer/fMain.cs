@@ -20,13 +20,13 @@ namespace PasswordContainer
         {
             //cuentas = ManejoFicheros.CargarCuentasApp(cuenta);
             cuentas = new ContenedorCuentas();
-            cuentas.Add(new CuentaApp("Facebook 1", "Facebook", new Usuario("PAcoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 2", "Facebook", new Usuario("PAacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 3", "Facebook", new Usuario("PAaaaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 4", "Facebook", new Usuario("PAaasaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 5", "Facebook", new Usuario("PAaasaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 6", "Facebook", new Usuario("PAasaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 7", "Facebook", new Usuario("PAaaaaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
+            cuentas.Add(new CuentaApp("Facebook 1", new Usuario("PAcosdfGarcia@gmail.com"), new PasswordCuenta("antonio!")));
+            cuentas.Add(new CuentaApp("Facebook 2", new Usuario("PAacsdfoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
+            cuentas.Add(new CuentaApp("Facebook 3", new Usuario("PAaaasdfacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
+            cuentas.Add(new CuentaApp("Facebook 4", new Usuario("PAaassdfaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
+            cuentas.Add(new CuentaApp("Facebook 5", new Usuario("PAaassdfaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
+            cuentas.Add(new CuentaApp("Facebook 6", new Usuario("PAasaacsdfoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
+            cuentas.Add(new CuentaApp("Facebook 7", new Usuario("PAaaaaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
             InitializeComponent();
             
         }
@@ -39,7 +39,14 @@ namespace PasswordContainer
             { 
                 return;
             }
-            cuentas.Add(BufferCuentaApp.extraerCuentaApp());
+            CuentaApp cuenta = BufferCuentaApp.extraerCuentaApp();
+            if (cuentas.contains(cuenta))
+            {
+                MessageBox.Show("Error la cuenta ya existe");
+                return;
+            }
+            cuentas.Add(cuenta);
+            MessageBox.Show("Cuenta añadida con exito");
 
         }
 
@@ -50,7 +57,6 @@ namespace PasswordContainer
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-            FMain_Load(sender, e);
         }
        
         private void BtnEliminar_Click(object sender, EventArgs e)
@@ -77,6 +83,7 @@ namespace PasswordContainer
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+         
 
         }
 
@@ -130,6 +137,12 @@ namespace PasswordContainer
             lblNombreCuenta.Text = "Cuenta " + cuenta.NombreCuenta;
             textUser.Text = cuenta.GetUsuario().User;
             textPassword.Text = cuenta.GetPassword();
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            Validar.cerrarSesion = true;
+            Close();
         }
     }
 }

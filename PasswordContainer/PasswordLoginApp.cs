@@ -19,5 +19,10 @@ namespace PasswordContainer
             return pssLoApp.getPassword().Equals(getPassword());
         }
 
+        public override int GetHashCode()
+        {
+            return getPassword().GetHashCode(); ;
+        }
+
     }
 }

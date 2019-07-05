@@ -19,6 +19,19 @@ namespace PasswordContainer
             Fichero = fichero;
         }
 
+        public PasswordLoginApp GetPassword()
+        {
+            return password;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is CuentaLoginApp)) return false;
+            CuentaLoginApp cuenta = (CuentaLoginApp)obj;
+            return cuenta.GetUsuario().User.Equals(GetUsuario().User) && cuenta.GetPassword().Equals(GetPassword());
+
+        }
+
 
 
 
