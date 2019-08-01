@@ -10,22 +10,63 @@ namespace PasswordContainer
 {
     public static class ManejoFicheros
     {
+        public static string directorio = Environment.GetEnvironmentVariable("HOMEPATH") + "/PasswordContainer";
+        private static string fCuentasApp = directorio + "/appsCounts.datw";
+        private static string fCuentasLoginApp = directorio + "/loginCounts.pswd";
 
-        public static string carpetaUsuariosLogin = "ContainerPassword";
-        private static string nombreFicheroLogin = "UsuariosLogin.dat";
 
-
-        public static ContenedorCuentas CargarCuentasApp(CuentaLoginApp user)
+        public static void CrearFicheros()
         {
-            throw new NotImplementedException();
+            if (!File.Exists(fCuentasApp)) File.Create(fCuentasApp);
+            if (!File.Exists(fCuentasLoginApp)) File.Create(fCuentasLoginApp);
+        }
+
+
+        public static ContenedorCuentas CargarCuentasApp()
+        {
+            ContenedorCuentas cuentas;
+            try
+            {
+                using (Stream st = File.Open(fCuentasApp, FileMode.Open))
+                {
+                    var binfor = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    Object obj = binfor.Deserialize(st);
+                    if (obj is ContenedorCuentas)
+                    {
+                        cuentas = (ContenedorCuentas)obj;
+                    }
+                    else
+                    {
+                        cuentas = null;
+                    }
+                    return cuentas;
+
+                }
+            }catch(FileNotFoundException)
+            {
+                return null;
+            }
+            
+            
 
         }
 
 
 
-        public static bool GuardarCuentaApp(List<CuentaApp> cuentas, string file)
+        public static bool GuardarCuentaApp(ContenedorCuentas cuentas)
         {
-            return false;
+            if (cuentas == null)
+            {
+                return false;
+            }
+            using (Stream st = File.Open(fCuentasApp, FileMode.Create))
+            {
+                var binfor = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                binfor.Serialize(st,cuentas);
+                return true;
+
+            }
+            
 
         }
 
@@ -34,48 +75,69 @@ namespace PasswordContainer
          */
         public static CuentaLoginApp LoginOnApp(CuentaLoginApp cuentaSesion)
         {
-            //prueba
-            if (cuentaSesion.Equals(new CuentaLoginApp(new Usuario("antonio"), new PasswordLoginApp("antonio"), "")))
-            {
-                return cuentaSesion;
-            }
-            return null;
-        
+            if (cuentaSesion == null) return null;
+
+            return existeCuenta(cuentaSesion);
 
         }
+
+        private static  CuentaLoginApp existeCuenta(CuentaLoginApp cuentaSesion)
+        {
+            var cuentasLogin = CargarCuentasLogin();
+            foreach (CuentaLoginApp cuenta in cuentasLogin)
+            {
+                if (cuenta.Equals(cuentaSesion))
+                {
+                    cuentasLogin = null;
+                    return cuenta;
+                }
+            }
+            return null;
+        }
+
+
+
+        public static bool GuardarCuentaLogin(CuentaLoginApp cuenta)
+        {
+            if (existeCuenta(cuenta) != null) return false;
+            var cuentas = CargarCuentasLogin();
+            cuentas.Add(cuenta);
+            using (Stream st = File.Open(fCuentasLoginApp, FileMode.Create))
+            {
+                var binfor = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                binfor.Serialize(st, cuentas);
+                return true;
+            }
+        }
+
 
         private static List<CuentaLoginApp> CargarCuentasLogin()
         {
-            FileStream fs = new FileStream(carpetaUsuariosLogin + "/" + nombreFicheroLogin, FileMode.Open);
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            List<CuentaLoginApp> cuentas = binaryFormatter.Deserialize(fs) as List<CuentaLoginApp>;
-            fs.Close();
-            return cuentas;
-        } 
-
-
-        private static bool GuardarCuentasLogin(List<CuentaLoginApp> cuentas)
-        {
-            try
+            List<CuentaLoginApp> cuentasLogin = null;
+            using (Stream st = File.Open(fCuentasLoginApp, FileMode.Open))
             {
-                Stream SaveFileStream = File.Create(carpetaUsuariosLogin + "/" + nombreFicheroLogin);
-                BinaryFormatter serializer = new BinaryFormatter();
-                serializer.Serialize(SaveFileStream, cuentas);
-                SaveFileStream.Close();
-                return true;
+                var binform = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                try
+                {
+                    return (List<CuentaLoginApp>)binform.Deserialize(st);
+                    
+                }
+                catch (System.Runtime.Serialization.SerializationException)
+                {
+                    return new List<CuentaLoginApp>();
+
+                }
+
             }
-            catch (Exception) { }
-            return false;
+            
 
 
 
         }
 
-        public static bool RegistrarCuenta(CuentaLoginApp cuenta)
-        {
-            //comprobar si esta repetido el nombre de usuario en ese caso devuleve falso. Si no se reptie devuleve true
-            return false;
-        }
+
+
+       
 
         public static void generartxtCuentas()
         {

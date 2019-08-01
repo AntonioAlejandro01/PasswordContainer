@@ -40,7 +40,7 @@ namespace PasswordContainer
             cuentaSesion = ManejoFicheros.LoginOnApp(cuentaSesion);
 
 
-            if (cuentaSesion == null || cuentaSesion.Fichero == null)
+            if (cuentaSesion == null)
             { 
                 Close();
                 return;

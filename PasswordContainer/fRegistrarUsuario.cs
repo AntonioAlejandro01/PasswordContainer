@@ -26,7 +26,14 @@ namespace PasswordContainer
 
         private void BtnCrearCuenta_Click(object sender, EventArgs e)
         {
-            if (!ManejoFicheros.RegistrarCuenta(new CuentaLoginApp(new Usuario(txtUsuario.Text), new PasswordLoginApp(txtPassword.Text), null)))
+            if (txtPassword.Text == null || txtPassword.Text.Equals("") || txtUsuario.Text == null || txtUsuario.Text.Equals("")) 
+            {
+                MessageBox.Show("Uno o los dos campos estan vacios");
+                txtPassword.Clear();
+                txtUsuario.Clear();
+                return;
+            }
+            if (!ManejoFicheros.GuardarCuentaLogin(new CuentaLoginApp(new Usuario(txtUsuario.Text), new PasswordLoginApp(txtPassword.Text), null)))
             {
                 Close();
                 return;
