@@ -30,16 +30,16 @@ namespace PasswordContainer
                 using (Stream st = File.Open(fCuentasApp, FileMode.Open))
                 {
                     var binfor = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    Object obj = binfor.Deserialize(st);
-                    if (obj is ContenedorCuentas)
+                    try
                     {
-                        cuentas = (ContenedorCuentas)obj;
+                        return (ContenedorCuentas)binfor.Deserialize(st);
                     }
-                    else
+                    catch (System.Runtime.Serialization.SerializationException)
                     {
-                        cuentas = null;
+                        return new ContenedorCuentas();
+
                     }
-                    return cuentas;
+                    
 
                 }
             }catch(FileNotFoundException)
@@ -139,9 +139,23 @@ namespace PasswordContainer
 
        
 
-        public static void generartxtCuentas()
+        public static void generartxtCuentas(ContenedorCuentas cuentas,string file)
         {
-            throw new NotImplementedException();
+            using (StreamWriter writter = new StreamWriter(file))
+            {
+                writter.WriteLine("Cuentas\n-----------------------------------------------------------------\nNombre\t\t\t\t\tUsuario\t\t\t\t\tContraseña");
+                foreach (CuentaApp cuenta in cuentas.GetCuentaApps())
+                {
+                    writter.WriteLine(formatoCuentaApp(cuenta) +"\n");
+
+
+                }
+
+            }
+        }
+        private static string formatoCuentaApp(CuentaApp cuenta)
+        {
+            return cuenta.NombreCuenta + "\t\t\t\t\t" + cuenta.GetUsuario().User + "\t\t\t\t\t" + cuenta.GetPassword();
         }
 
 

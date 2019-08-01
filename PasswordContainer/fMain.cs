@@ -14,20 +14,14 @@ namespace PasswordContainer
     {
 
         private ContenedorCuentas cuentas;
+        private CuentaLoginApp cuenta;
 
 
         public fMain(CuentaLoginApp cuenta)
         {
-            //cuentas = ManejoFicheros.CargarCuentasApp(cuenta);
-            cuentas = new ContenedorCuentas();
-            cuentas.Add(new CuentaApp("Facebook 1", new Usuario("PAcosdfGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 2", new Usuario("PAacsdfoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 3", new Usuario("PAaaasdfacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 4", new Usuario("PAaassdfaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 5", new Usuario("PAaassdfaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 6", new Usuario("PAasaacsdfoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            cuentas.Add(new CuentaApp("Facebook 7", new Usuario("PAaaaaacoGarcia@gmail.com"), new PasswordCuenta("antonio!")));
-            InitializeComponent();
+            this.cuenta = cuenta;
+            cuentas = ManejoFicheros.CargarCuentasApp();
+            InitializeComponent()
             
         }
 
@@ -52,7 +46,7 @@ namespace PasswordContainer
 
         private void FMain_Load(object sender, EventArgs e)
         {
-           
+            lblVisor.Text += " de " + cuenta.GetUsuario().User;
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)
@@ -81,15 +75,14 @@ namespace PasswordContainer
 
         }
 
-        private void BtnModificar_Click(object sender, EventArgs e)
-        {
-         
-
-        }
+       
 
         private void BtnDocumento_Click(object sender, EventArgs e)
         {
-            ManejoFicheros.generartxtCuentas();
+            if (sFileDial.ShowDialog() == DialogResult.OK)
+            {
+                ManejoFicheros.generartxtCuentas(cuentas, sFileDial.FileName);
+            }
         }
 
         private void BtnSelect_Click(object sender, EventArgs e)
@@ -143,6 +136,18 @@ namespace PasswordContainer
         {
             Validar.cerrarSesion = true;
             Close();
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            if (ManejoFicheros.GuardarCuentaApp(cuentas))
+            {
+                MessageBox.Show("Se guardo con existo");
+            }
+            else
+            {
+                MessageBox.Show("ERROR.Hubo un problema al guardar los datos");
+            }
         }
     }
 }

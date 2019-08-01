@@ -33,10 +33,11 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAniadir = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnDocumento = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnVer = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,9 +45,9 @@
             this.textPassword = new System.Windows.Forms.TextBox();
             this.btnSelect = new System.Windows.Forms.Button();
             this.lblNombreCuenta = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblVisor = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.sFileDial = new System.Windows.Forms.SaveFileDialog();
             this.tableContenedor.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -75,7 +76,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btnAniadir, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnEliminar, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnModificar, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnSave, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnDocumento, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnSalir, 0, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(583, 6);
@@ -111,16 +112,16 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
-            // btnModificar
+            // btnSave
             // 
-            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(3, 169);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(197, 89);
-            this.btnModificar.TabIndex = 3;
-            this.btnModificar.Text = "Guardar Cambios";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(3, 169);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(197, 89);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Guardar Cambios";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // btnDocumento
             // 
@@ -159,6 +160,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(568, 488);
             this.panel1.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(412, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(156, 160);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // btnVer
             // 
@@ -229,15 +241,15 @@
             this.lblNombreCuenta.TabIndex = 0;
             this.lblNombreCuenta.Text = "Cuenta";
             // 
-            // label1
+            // lblVisor
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 55);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Visor";
+            this.lblVisor.AutoSize = true;
+            this.lblVisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVisor.Location = new System.Drawing.Point(12, 19);
+            this.lblVisor.Name = "lblVisor";
+            this.lblVisor.Size = new System.Drawing.Size(133, 55);
+            this.lblVisor.TabIndex = 1;
+            this.lblVisor.Text = "Visor";
             // 
             // label2
             // 
@@ -249,16 +261,10 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Menú";
             // 
-            // pictureBox1
+            // sFileDial
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(412, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(156, 160);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.sFileDial.DefaultExt = "txt";
+            this.sFileDial.FileName = "Cuentas";
             // 
             // fMain
             // 
@@ -266,7 +272,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 603);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblVisor);
             this.Controls.Add(this.tableContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -288,11 +294,11 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableContenedor;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblVisor;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnAniadir;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDocumento;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Panel panel1;
@@ -305,6 +311,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnVer;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.SaveFileDialog sFileDial;
     }
 }
 
