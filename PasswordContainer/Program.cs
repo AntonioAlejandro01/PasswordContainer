@@ -50,11 +50,12 @@ namespace PasswordContainer
          */
         private static void CrearCarpeta()
         {
-            if (Directory.Exists(ManejoFicheros.directorio))
-            {
-                return;
-            }
-            Directory.CreateDirectory(ManejoFicheros.directorio);
+            if (Directory.Exists(ManejoFicheros.directorioGeneral)) return;
+
+            DirectoryInfo Dif = new DirectoryInfo(ManejoFicheros.directorioGeneral);
+            Dif.Create();
+            Dif.Attributes = FileAttributes.Hidden;
+
         }
 
        

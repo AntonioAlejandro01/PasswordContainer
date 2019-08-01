@@ -10,10 +10,12 @@ namespace PasswordContainer
 {
     public static class ManejoFicheros
     {
-        public static string directorio = Environment.GetEnvironmentVariable("HOMEPATH") + "/PasswordContainer";
-        private static string fCuentasApp = directorio + "/appsCounts.datw";
-        private static string fCuentasLoginApp = directorio + "/loginCounts.pswd";
+        public static string directorioGeneral = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "/PasswordContainer";
+        private static string directoriofiles = directorioGeneral + "/filesCuentas";
+         private static string fCuentasLoginApp = directorioGeneral + "/loginCounts.pswd";
 
+        private static string fCuentasApp = directorioGeneral + "/appsCounts.datw";
+       
 
         public static void CrearFicheros()
         {
