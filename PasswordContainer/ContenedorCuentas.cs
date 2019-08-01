@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswordContainer
 {
+    [Serializable]
     public class ContenedorCuentas
     {
         private List<CuentaApp> cuentas;
@@ -45,7 +46,7 @@ namespace PasswordContainer
         {
             cuentas.TrimExcess();
             CuentaApp[] cuentasTmp = cuentas.ToArray();
-            ordenar(cuentasTmp);
+            //ordenar(cuentasTmp);
             return cuentasTmp;
         }
 
@@ -67,6 +68,18 @@ namespace PasswordContainer
             }
         }
 
+        public bool contains(CuentaApp cuenta)
+        {
+            foreach(CuentaApp cuentaApp in cuentas)
+            {
+                if (cuenta.Equals(cuentaApp))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
 
 
@@ -74,6 +87,16 @@ namespace PasswordContainer
         {
             return cuentas.Contains(cuenta);
 
+        }
+
+        public int size()
+        {
+            return cuentas.Count;
+        }
+
+        public bool isEmpty()
+        {
+            return cuentas.Count == 0;
         }
 
 

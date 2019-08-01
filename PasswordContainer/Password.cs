@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswordContainer
 {
+    [Serializable]
     public abstract class Password
     {
         private string passwordEncript;//la password solo se desencripta para verla

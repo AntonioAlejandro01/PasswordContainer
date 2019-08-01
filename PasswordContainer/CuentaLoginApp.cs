@@ -6,22 +6,34 @@ using System.Threading.Tasks;
 
 namespace PasswordContainer
 {
-    class CuentaLoginApp : Cuenta 
+    [Serializable]
+    public class CuentaLoginApp : Cuenta 
     {
         private PasswordLoginApp password;
+        public string Fichero { get; private set; }
 
 
 
-        public CuentaLoginApp(Usuario usuario, PasswordLoginApp password) : base(usuario)
+        public CuentaLoginApp(Usuario usuario, PasswordLoginApp password, string fichero) : base(usuario)
         {
             this.password = password;
+            Fichero = fichero;
         }
 
-
-        public bool login(Usuario usuario , string password)
+        public PasswordLoginApp GetPassword()
         {
-            return (GetUsuario().Equals(usuario) && this.password.Equals(new PasswordLoginApp(password)));
+            return password;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is CuentaLoginApp)) return false;
+            CuentaLoginApp cuenta = (CuentaLoginApp)obj;
+            return cuenta.GetUsuario().User.Equals(GetUsuario().User) && cuenta.GetPassword().Equals(GetPassword());
+
+        }
+
+
 
 
 

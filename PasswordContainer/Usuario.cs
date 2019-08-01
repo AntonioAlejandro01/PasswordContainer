@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswordContainer
 {
+    [Serializable]
     public class Usuario
     {
         public string User { get; set; }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswordContainer
 {
+    [Serializable]
     public class PasswordLoginApp : Password
     {
 
@@ -17,6 +18,11 @@ namespace PasswordContainer
             if (!(obj is PasswordLoginApp)) return false;
             PasswordLoginApp pssLoApp = (PasswordLoginApp)obj;
             return pssLoApp.getPassword().Equals(getPassword());
+        }
+
+        public override int GetHashCode()
+        {
+            return getPassword().GetHashCode(); ;
         }
 
     }
