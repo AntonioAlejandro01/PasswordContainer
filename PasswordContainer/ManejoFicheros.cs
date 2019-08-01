@@ -24,7 +24,6 @@ namespace PasswordContainer
 
         public static ContenedorCuentas CargarCuentasApp()
         {
-            ContenedorCuentas cuentas;
             try
             {
                 using (Stream st = File.Open(fCuentasApp, FileMode.Open))
@@ -113,7 +112,6 @@ namespace PasswordContainer
 
         private static List<CuentaLoginApp> CargarCuentasLogin()
         {
-            List<CuentaLoginApp> cuentasLogin = null;
             using (Stream st = File.Open(fCuentasLoginApp, FileMode.Open))
             {
                 var binform = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();

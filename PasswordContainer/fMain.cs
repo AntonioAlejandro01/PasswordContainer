@@ -21,7 +21,7 @@ namespace PasswordContainer
         {
             this.cuenta = cuenta;
             cuentas = ManejoFicheros.CargarCuentasApp();
-            InitializeComponent()
+            InitializeComponent();
             
         }
 
