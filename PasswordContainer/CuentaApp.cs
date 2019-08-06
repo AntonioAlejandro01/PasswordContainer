@@ -34,7 +34,7 @@ namespace PasswordContainer
 
         public void SetUsuario(string usuario)
         {
-            GetUsuario().User = usuario;
+            GetUsuario().setNombreUsuario(usuario);
         }
 
         public override bool Equals(object obj)
@@ -43,12 +43,12 @@ namespace PasswordContainer
 
             CuentaApp cuentaApp = (CuentaApp)obj;
 
-            return cuentaApp.GetUsuario().User.ToUpper().Equals(GetUsuario().User.ToUpper()) && cuentaApp.NombreCuenta.ToUpper().Equals(NombreCuenta.ToUpper());
+            return cuentaApp.GetUsuario().getNombreUsuario().ToUpper().Equals(GetUsuario().getNombreUsuario().ToUpper()) && cuentaApp.NombreCuenta.ToUpper().Equals(NombreCuenta.ToUpper());
         }
 
         public override int GetHashCode()
         {
-            return (NombreCuenta.ToUpper() + GetUsuario().User).GetHashCode();
+            return (NombreCuenta.ToUpper() + GetUsuario().getNombreUsuario()).GetHashCode();
         }
 
         public int CompareTo(object obj)
@@ -58,7 +58,7 @@ namespace PasswordContainer
 
         public override string ToString()
         {
-            return NombreCuenta.ToUpper() + "\n"+GetUsuario().User + "\n" + GetPassword();
+            return NombreCuenta.ToUpper() + "\n"+GetUsuario().getNombreUsuario() + "\n" + GetPassword();
         }
     }
 }

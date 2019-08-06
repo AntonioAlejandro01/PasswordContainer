@@ -9,13 +9,23 @@ namespace PasswordContainer
     [Serializable]
     public class Usuario
     {
-        public string User { get; set; }
+        public string nombreUsuario;
 
         public Usuario(string usuario)
         {
-            User = usuario;
+            setNombreUsuario(usuario);
+            
         }
 
+
+        public string getNombreUsuario()
+        {
+            return Encoding.Unicode.GetString(Convert.FromBase64String(nombreUsuario));
+        }
+        public void setNombreUsuario(string value)
+        {
+            nombreUsuario = Convert.ToBase64String(Encoding.Unicode.GetBytes(value));
+        }
 
 
         public override bool Equals(object obj)
@@ -23,7 +33,7 @@ namespace PasswordContainer
             if (!(obj is Usuario)) return false;
 
             Usuario usuario = (Usuario)obj;
-            return usuario.Equals(User);
+            return usuario.Equals(getNombreUsuario());
         }
 
 

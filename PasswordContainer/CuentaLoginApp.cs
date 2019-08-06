@@ -37,7 +37,7 @@ namespace PasswordContainer
         {
             if (!(obj is CuentaLoginApp)) return false;
             CuentaLoginApp cuenta = (CuentaLoginApp)obj;
-            return cuenta.GetUsuario().User.Equals(GetUsuario().User) && cuenta.GetPassword().Equals(GetPassword());
+            return cuenta.GetUsuario().getNombreUsuario().Equals(GetUsuario().getNombreUsuario()) && cuenta.GetPassword().Equals(GetPassword());
 
         }
 

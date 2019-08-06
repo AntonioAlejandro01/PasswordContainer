@@ -46,7 +46,7 @@ namespace PasswordContainer
 
         private void FMain_Load(object sender, EventArgs e)
         {
-            lblVisor.Text += " de " + cuenta.GetUsuario().User;
+            lblVisor.Text += " de " + cuenta.GetUsuario().getNombreUsuario();
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)
@@ -128,7 +128,7 @@ namespace PasswordContainer
         {
             if (cuenta == null) return;
             lblNombreCuenta.Text = "Cuenta " + cuenta.NombreCuenta;
-            textUser.Text = cuenta.GetUsuario().User;
+            textUser.Text = cuenta.GetUsuario().getNombreUsuario();
             textPassword.Text = cuenta.GetPassword();
         }
 

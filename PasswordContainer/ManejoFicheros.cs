@@ -177,7 +177,7 @@ namespace PasswordContainer
         }
         private static string formatoCuentaApp(CuentaApp cuenta)
         {
-            return cuenta.NombreCuenta + "\t\t\t\t\t" + cuenta.GetUsuario().User + "\t\t\t\t\t" + cuenta.GetPassword();
+            return cuenta.NombreCuenta + "\t\t\t\t\t" + cuenta.GetUsuario().getNombreUsuario() + "\t\t\t\t\t" + cuenta.GetPassword();
         }
 
 
