@@ -23,6 +23,26 @@ namespace PasswordContainer
             ManejoFicheros.CrearFicheros();
             int intentos = 5;
             bool inicioSesion = false;
+            for (int i = 0; i < intentos && !inicioSesion; i++)
+            {
+                
+                if (ObtenerUsuario())
+                {
+                    ManejoFicheros.LoginOnApp(user);
+                    inicioSesion = true;
+                    MessageBox.Show("Sesion iniciada");
+
+                }
+                else
+                {
+                    MessageBox.Show("Datos no validos");
+                }
+            }
+
+
+
+
+            /*
             while (!ObtenerUsuario() && --intentos != 0 && !inicioSesion)
             {
                 user = ManejoFicheros.LoginOnApp(user);
@@ -33,12 +53,12 @@ namespace PasswordContainer
                 }
 
             }
-            if (intentos == 0)
+            */
+            if (!inicioSesion)
             {
                 MessageBox.Show("Numero de intentos de iniciar sesión cumplidos.\nAdiós.");
                 return;
             }
-           
 
             Application.Run(new fMain(user));
             
