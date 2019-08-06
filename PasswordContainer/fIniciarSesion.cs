@@ -36,7 +36,7 @@ namespace PasswordContainer
         private void BtnSign_Click(object sender, EventArgs e)
         {
             
-            CuentaLoginApp cuentaSesion = new CuentaLoginApp(new Usuario(txtUser.Text), new PasswordLoginApp(txtPassword.Text), null);
+            CuentaLoginApp cuentaSesion = new CuentaLoginApp(new Usuario(txtUser.Text), new PasswordLoginApp(txtPassword.Text));
             cuentaSesion = ManejoFicheros.LoginOnApp(cuentaSesion);
 
 

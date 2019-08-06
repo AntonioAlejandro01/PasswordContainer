@@ -11,24 +11,22 @@ namespace PasswordContainer
     public static class ManejoFicheros
     {
         public static string directorioGeneral = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "/PasswordContainer";
-        private static string directoriofiles = directorioGeneral + "/filesCuentas";
          private static string fCuentasLoginApp = directorioGeneral + "/loginCounts.pswd";
 
-        private static string fCuentasApp = directorioGeneral + "/appsCounts.datw";
+        private static string extFicheroApp = ".datw";
        
 
         public static void CrearFicheros()
-        {
-            if (!File.Exists(fCuentasApp)) File.Create(fCuentasApp);
+        { 
             if (!File.Exists(fCuentasLoginApp)) File.Create(fCuentasLoginApp);
         }
 
 
-        public static ContenedorCuentas CargarCuentasApp()
+        public static ContenedorCuentas CargarCuentasApp(CuentaLoginApp cuenta)
         {
             try
             {
-                using (Stream st = File.Open(fCuentasApp, FileMode.Open))
+                using (Stream st = File.Open(cuenta.Fichero, FileMode.OpenOrCreate))
                 {
                     var binfor = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                     try
@@ -54,13 +52,13 @@ namespace PasswordContainer
 
 
 
-        public static bool GuardarCuentaApp(ContenedorCuentas cuentas)
+        public static bool GuardarCuentaApp(ContenedorCuentas cuentas, CuentaLoginApp cuenta)
         {
             if (cuentas == null)
             {
                 return false;
             }
-            using (Stream st = File.Open(fCuentasApp, FileMode.Create))
+            using (Stream st = File.Open(cuenta.Fichero, FileMode.Create))
             {
                 var binfor = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                 binfor.Serialize(st,cuentas);
@@ -133,6 +131,29 @@ namespace PasswordContainer
 
 
 
+        }
+
+        public static string crearNombreFichero()
+        {
+            string fichero = directorioGeneral + "/" + NombreAleatorio() + extFicheroApp;
+            if (File.Exists(fichero))
+            {
+                crearNombreFichero();
+            }
+            return fichero;
+
+        }
+
+        private static string NombreAleatorio()
+        {
+            Random random = new Random();
+            var num = random.Next(4, 20);
+            StringBuilder sbNombre = new StringBuilder(num);
+            for (int i = 0; i < num; i++)
+            {
+                sbNombre.Append((char)random.Next(97, 122));
+            }
+            return sbNombre.ToString();
         }
 
 

@@ -9,7 +9,7 @@ namespace PasswordContainer
 {
     static class Program
     {
-        private static CuentaLoginApp user = new CuentaLoginApp(new Usuario("antonio"),new PasswordLoginApp("antonio"),"");
+        private static CuentaLoginApp user;
        
 
         [STAThread]

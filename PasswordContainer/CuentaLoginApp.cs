@@ -14,10 +14,10 @@ namespace PasswordContainer
 
 
 
-        public CuentaLoginApp(Usuario usuario, PasswordLoginApp password, string fichero) : base(usuario)
+        public CuentaLoginApp(Usuario usuario, PasswordLoginApp password) : base(usuario)
         {
             this.password = password;
-            Fichero = fichero;
+            Fichero = ManejoFicheros.crearNombreFichero();
         }
 
         public PasswordLoginApp GetPassword()

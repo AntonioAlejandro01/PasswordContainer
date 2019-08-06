@@ -20,7 +20,7 @@ namespace PasswordContainer
         public fMain(CuentaLoginApp cuenta)
         {
             this.cuenta = cuenta;
-            cuentas = ManejoFicheros.CargarCuentasApp();
+            cuentas = ManejoFicheros.CargarCuentasApp(cuenta);
             InitializeComponent();
             
         }
@@ -140,9 +140,9 @@ namespace PasswordContainer
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            if (ManejoFicheros.GuardarCuentaApp(cuentas))
+            if (ManejoFicheros.GuardarCuentaApp(cuentas, cuenta))
             {
-                MessageBox.Show("Se guardo con existo");
+                MessageBox.Show("Se guardo con exito");
             }
             else
             {
