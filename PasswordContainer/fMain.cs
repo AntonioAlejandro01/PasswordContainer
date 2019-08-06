@@ -15,22 +15,97 @@ namespace PasswordContainer
 
         private ContenedorCuentas cuentas;
         private CuentaLoginApp cuenta;
+        private static string mensajePeligro = "La información esta a la vista.";
 
 
         public fMain(CuentaLoginApp cuenta)
         {
             this.cuenta = cuenta;
             cuentas = ManejoFicheros.CargarCuentasApp(cuenta);
+
             InitializeComponent();
-            
+            lblListado.Text += cuenta.GetUsuario().getNombreUsuario();
+            toolTip1.SetToolTip(lblPeligro,mensajePeligro);
+
         }
 
-        private void BtnAniadir_Click(object sender, EventArgs e)
+
+        private void FMain_Load(object sender, EventArgs e)
+        {
+            
+            listBoxCuentasApp.DataSource = cuentas.getNombresCuentas();
+            lblPeligro.Visible = false;
+            lblPeligro2.Visible = false;
+            lblUsuario.Clear();
+            lblPassword.Clear();
+            lblUsuario.UseSystemPasswordChar = true;
+            lblPassword.UseSystemPasswordChar = true;
+        }
+
+  
+
+        private CuentaApp cuentaSeleccionada()
+        {
+            if (cuentas.size() == 0)
+            {
+               
+                return null;
+            }
+            fSeleccionar fSelect = new fSeleccionar(cuentas.GetCuentaApps());
+            fSelect.ShowDialog();
+            return BufferCuentaApp.extraerCuentaApp();
+        }
+
+        private void BtnRecogerCuenta_Click(object sender, EventArgs e)
+        {
+            CuentaApp cuenta = buscarCuenta((string)listBoxCuentasApp.SelectedItem);
+            mostrarCuenta(cuenta);
+            lblPeligro.Visible = false;
+            lblPeligro2.Visible = false;
+            lblPassword.UseSystemPasswordChar = true;
+            lblUsuario.UseSystemPasswordChar = true;
+
+        }
+
+        private void mostrarCuenta(CuentaApp cuenta)
+        {
+            lblNombreCuenta.Text = cuenta.NombreCuenta;
+            lblUsuario.Text = cuenta.GetUsuario().getNombreUsuario();
+            lblPassword.Text = cuenta.GetPassword();
+
+        }
+
+        
+
+        private CuentaApp buscarCuenta(string nombreCuenta)
+        {
+            var cuentas = this.cuentas.GetCuentaApps();
+            foreach (CuentaApp cuenta in cuentas)
+            {
+                if (nombreCuenta.Equals(cuenta.NombreCuenta))
+                {
+                    return cuenta;
+                }
+
+            }
+            return null;
+        }
+
+        private void BtnDesencriptar_Click(object sender, EventArgs e)
+        {
+            lblUsuario.UseSystemPasswordChar = false;
+            lblPassword.UseSystemPasswordChar = false;
+            lblPeligro.Visible = true;
+            lblPeligro2.Visible = true;
+
+        }
+
+        private void Aniadir(object sender, EventArgs e)
         {
             fAniadir fAniadir = new fAniadir();
             fAniadir.ShowDialog();
             if (!BufferCuentaApp.HayCuenta)
-            { 
+            {
                 return;
             }
             CuentaApp cuenta = BufferCuentaApp.extraerCuentaApp();
@@ -41,21 +116,12 @@ namespace PasswordContainer
             }
             cuentas.Add(cuenta);
             MessageBox.Show("Cuenta añadida con exito");
+            FMain_Load(sender,e);
 
         }
 
-        private void FMain_Load(object sender, EventArgs e)
+        private void Eliminar(object sender, EventArgs e)
         {
-            lblVisor.Text += " de " + cuenta.GetUsuario().getNombreUsuario();
-        }
-
-        private void BtnRefresh_Click(object sender, EventArgs e)
-        {
-        }
-       
-        private void BtnEliminar_Click(object sender, EventArgs e)
-        {
-            
             if (cuentas.size() == 0)
             {
                 MessageBox.Show("No hay ninguna cuenta guardada");
@@ -72,73 +138,14 @@ namespace PasswordContainer
                 MessageBox.Show("Cuenta No eliminada.");
             }
 
-
         }
 
-       
-
-        private void BtnDocumento_Click(object sender, EventArgs e)
-        {
-            if (sFileDial.ShowDialog() == DialogResult.OK)
-            {
-                ManejoFicheros.generartxtCuentas(cuentas, sFileDial.FileName);
-            }
-        }
-
-        private void BtnSelect_Click(object sender, EventArgs e)
+        private void MenStMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
-            
-            if (cuentas.size() == 0)
-            {
-                MessageBox.Show("No hay ninguna cuenta guardada");
-                return;
-            }
-            mostrarCuenta(cuentaSeleccionada());
-            
-            
         }
 
-        private void BtnVer_Click(object sender, EventArgs e)
-        {
-            textPassword.UseSystemPasswordChar = !textPassword.UseSystemPasswordChar;
-            if (textPassword.UseSystemPasswordChar)
-            {
-                btnVer.FlatAppearance.BorderSize = 0;
-            }
-            else
-            {
-                btnVer.FlatAppearance.BorderSize = 1;
-            }
-        }
-
-        private CuentaApp cuentaSeleccionada()
-        {
-            if (cuentas.size() == 0)
-            {
-               
-                return null;
-            }
-            fSeleccionar fSelect = new fSeleccionar(cuentas.GetCuentaApps());
-            fSelect.ShowDialog();
-            return BufferCuentaApp.extraerCuentaApp();
-        }
-
-        private void mostrarCuenta(CuentaApp cuenta)
-        {
-            if (cuenta == null) return;
-            lblNombreCuenta.Text = "Cuenta " + cuenta.NombreCuenta;
-            textUser.Text = cuenta.GetUsuario().getNombreUsuario();
-            textPassword.Text = cuenta.GetPassword();
-        }
-
-        private void BtnSalir_Click(object sender, EventArgs e)
-        {
-            Validar.cerrarSesion = true;
-            Close();
-        }
-
-        private void BtnSave_Click(object sender, EventArgs e)
+        private void SavesChanges(object sender, EventArgs e)
         {
             if (ManejoFicheros.GuardarCuentaApp(cuentas, cuenta))
             {
@@ -148,6 +155,31 @@ namespace PasswordContainer
             {
                 MessageBox.Show("ERROR.Hubo un problema al guardar los datos");
             }
+
+        }
+
+        private void generateTxt(object sender, EventArgs e)
+        {
+            if (sFileDial.ShowDialog() == DialogResult.OK)
+            {
+                ManejoFicheros.generartxtCuentas(cuentas, sFileDial.FileName);
+            }
+
+        }
+
+        private void LblPeligro_MouseHover(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void BtnEncriptar_Click(object sender, EventArgs e)
+        {
+            lblUsuario.UseSystemPasswordChar = true;
+            lblPassword.UseSystemPasswordChar = true;
+            lblPeligro.Visible = false;
+            lblPeligro2.Visible = false;
+
         }
     }
 }

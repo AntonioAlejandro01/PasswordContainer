@@ -46,8 +46,18 @@ namespace PasswordContainer
         {
             cuentas.TrimExcess();
             CuentaApp[] cuentasTmp = cuentas.ToArray();
-            //ordenar(cuentasTmp);
             return cuentasTmp;
+        }
+
+        public string[] getNombresCuentas()
+        {
+            var cuentas = GetCuentaApps();
+            string[] nombresCuentas = new string[cuentas.Length];
+            for (int i = 0; i < cuentas.Length; i++)
+            {
+                nombresCuentas[i] = cuentas[i].NombreCuenta;
+            }
+            return nombresCuentas;
         }
 
         private void ordenar(CuentaApp[] cuentas)

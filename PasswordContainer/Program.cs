@@ -51,7 +51,7 @@ namespace PasswordContainer
         }
 
         /**
-         * Método que crea la carpeta doande se van a guardar los archivos
+         * Método que crea la carpeta donde se van a guardar los archivos
          */
         private static void CrearCarpeta()
         {
