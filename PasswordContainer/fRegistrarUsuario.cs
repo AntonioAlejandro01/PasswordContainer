@@ -33,12 +33,16 @@ namespace PasswordContainer
                 txtUsuario.Clear();
                 return;
             }
-            if (!ManejoFicheros.GuardarCuentaLogin(new CuentaLoginApp(new Usuario(txtUsuario.Text), new PasswordLoginApp(txtPassword.Text))))
+            if (!ManejoFicheros.RegistrarCuentaLogin(new CuentaLoginApp(new Usuario(txtUsuario.Text), new PasswordLoginApp(txtPassword.Text))))
             {
                 Close();
                 return;
             }
-            BufferCuentaLogin.aniadirCuenta(new CuentaLoginApp(new Usuario(txtUsuario.Text), new PasswordLoginApp(txtPassword.Text)));
+            else
+            {
+                BufferCuentaLogin.aniadirCuenta(new CuentaLoginApp(new Usuario(txtUsuario.Text), new PasswordLoginApp(txtPassword.Text)));
+                Close();
+            }
             Close();
         }
     }

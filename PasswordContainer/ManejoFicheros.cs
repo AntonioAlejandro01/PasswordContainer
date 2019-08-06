@@ -26,7 +26,7 @@ namespace PasswordContainer
         {
             try
             {
-                using (Stream st = File.Open(cuenta.Fichero, FileMode.OpenOrCreate))
+                using (Stream st = File.Open(cuenta.getFichero(), FileMode.OpenOrCreate))
                 {
                     var binfor = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                     try
@@ -58,9 +58,9 @@ namespace PasswordContainer
             {
                 return false;
             }
-            using (Stream st = File.Open(cuenta.Fichero, FileMode.Create))
+            using (Stream st = File.Open(cuenta.getFichero(), FileMode.Create))
             {
-                var binfor = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var binfor = new BinaryFormatter();
                 binfor.Serialize(st,cuentas);
                 return true;
 
@@ -96,14 +96,15 @@ namespace PasswordContainer
 
 
 
-        public static bool GuardarCuentaLogin(CuentaLoginApp cuenta)
+        public static bool RegistrarCuentaLogin(CuentaLoginApp cuenta)
         {
             if (existeCuenta(cuenta) != null) return false;
+            File.Create(cuenta.getFichero());
             var cuentas = CargarCuentasLogin();
             cuentas.Add(cuenta);
-            using (Stream st = File.Open(fCuentasLoginApp, FileMode.Create))
+            using (Stream st = File.Open(fCuentasLoginApp, FileMode.OpenOrCreate))
             {
-                var binfor = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var binfor = new BinaryFormatter();
                 binfor.Serialize(st, cuentas);
                 return true;
             }
@@ -114,7 +115,7 @@ namespace PasswordContainer
         {
             using (Stream st = File.Open(fCuentasLoginApp, FileMode.Open))
             {
-                var binform = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var binform = new BinaryFormatter();
                 try
                 {
                     return (List<CuentaLoginApp>)binform.Deserialize(st);

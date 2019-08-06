@@ -10,19 +10,27 @@ namespace PasswordContainer
     public class CuentaLoginApp : Cuenta 
     {
         private PasswordLoginApp password;
-        public string Fichero { get; private set; }
-
-
+        public string fichero; 
+        
 
         public CuentaLoginApp(Usuario usuario, PasswordLoginApp password) : base(usuario)
         {
             this.password = password;
-            Fichero = ManejoFicheros.crearNombreFichero();
+            setFichero(ManejoFicheros.crearNombreFichero());
         }
 
         public PasswordLoginApp GetPassword()
         {
             return password;
+        }
+
+        public string getFichero()
+        {
+            return Encoding.Unicode.GetString(Convert.FromBase64String(fichero));
+        }
+        public void setFichero(string value)
+        {
+            fichero = Convert.ToBase64String(Encoding.Unicode.GetBytes(value));
         }
 
         public override bool Equals(object obj)

@@ -39,7 +39,6 @@ namespace PasswordContainer
             CuentaLoginApp cuentaSesion = new CuentaLoginApp(new Usuario(txtUser.Text), new PasswordLoginApp(txtPassword.Text));
             cuentaSesion = ManejoFicheros.LoginOnApp(cuentaSesion);
 
-
             if (cuentaSesion == null)
             { 
                 Close();
@@ -61,7 +60,7 @@ namespace PasswordContainer
             fRegistrarUsuario fRegistrarUsuario = new fRegistrarUsuario();
             fRegistrarUsuario.ShowDialog();
             CuentaLoginApp cuentaNueva = BufferCuentaLogin.ExtraerCuentaLoginApp();
-            if(cuentaNueva == null|| cuentaNueva.Fichero == null)
+            if(cuentaNueva == null|| cuentaNueva.getFichero() == null)
             {
                 Close();
                 return;
