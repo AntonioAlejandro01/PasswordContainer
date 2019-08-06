@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("PasswordContainer")]
 [assembly: AssemblyDescription("Contenedor de cuentas")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Antonio Alejandnro Serrano Ramirez")]
+[assembly: AssemblyCompany("Antonio Alejandroo Serrano Ramirez")]
 [assembly: AssemblyProduct("PasswordContainer")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.9.1.0")]
-[assembly: AssemblyFileVersion("0.9.9.1")]
+[assembly: AssemblyVersion("0.9.9.8")]
+[assembly: AssemblyFileVersion("0.9.9.8")]

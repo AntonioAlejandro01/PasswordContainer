@@ -39,21 +39,6 @@ namespace PasswordContainer
                 }
             }
 
-
-
-
-            /*
-            while (!ObtenerUsuario() && --intentos != 0 && !inicioSesion)
-            {
-                user = ManejoFicheros.LoginOnApp(user);
-                inicioSesion = (user == null);
-                if (!inicioSesion)
-                {
-                    MessageBox.Show("Error. \nUsuario o contraseña incorrecta");
-                }
-
-            }
-            */
             if (!inicioSesion)
             {
                 MessageBox.Show("Numero de intentos de iniciar sesión cumplidos.\nAdiós.");
