@@ -99,7 +99,6 @@ namespace PasswordContainer
         public static bool RegistrarCuentaLogin(CuentaLoginApp cuenta)
         {
             if (existeCuenta(cuenta) != null) return false;
-            File.Create(cuenta.getFichero());
             var cuentas = CargarCuentasLogin();
             cuentas.Add(cuenta);
             using (Stream st = File.Open(fCuentasLoginApp, FileMode.OpenOrCreate))
