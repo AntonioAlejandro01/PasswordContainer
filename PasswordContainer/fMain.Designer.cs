@@ -44,14 +44,16 @@
             this.listBoxCuentasApp = new System.Windows.Forms.ListBox();
             this.btnRecogerCuenta = new System.Windows.Forms.Button();
             this.lblNombreCuenta = new System.Windows.Forms.Label();
-            this.btnDesencriptar = new System.Windows.Forms.Button();
-            this.lblPeligro = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblPeligro2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblEscudo2 = new System.Windows.Forms.Label();
+            this.lblEscudo = new System.Windows.Forms.Label();
             this.btnEncriptar = new System.Windows.Forms.Button();
+            this.lblPeligro2 = new System.Windows.Forms.Label();
+            this.lblPeligro = new System.Windows.Forms.Label();
+            this.btnDesencriptar = new System.Windows.Forms.Button();
             this.menStMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,26 +178,6 @@
             this.lblNombreCuenta.Text = "Nombre de la cuenta";
             this.lblNombreCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnDesencriptar
-            // 
-            this.btnDesencriptar.Location = new System.Drawing.Point(260, 288);
-            this.btnDesencriptar.Name = "btnDesencriptar";
-            this.btnDesencriptar.Size = new System.Drawing.Size(282, 96);
-            this.btnDesencriptar.TabIndex = 7;
-            this.btnDesencriptar.Text = "Desencriptar";
-            this.btnDesencriptar.UseVisualStyleBackColor = true;
-            this.btnDesencriptar.Click += new System.EventHandler(this.BtnDesencriptar_Click);
-            // 
-            // lblPeligro
-            // 
-            this.lblPeligro.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblPeligro.Image = ((System.Drawing.Image)(resources.GetObject("lblPeligro.Image")));
-            this.lblPeligro.Location = new System.Drawing.Point(686, 136);
-            this.lblPeligro.Name = "lblPeligro";
-            this.lblPeligro.Size = new System.Drawing.Size(135, 112);
-            this.lblPeligro.TabIndex = 8;
-            this.lblPeligro.MouseHover += new System.EventHandler(this.LblPeligro_MouseHover);
-            // 
             // lblUsuario
             // 
             this.lblUsuario.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -228,15 +210,6 @@
             // 
             this.toolTip1.ToolTipTitle = "Peligro";
             // 
-            // lblPeligro2
-            // 
-            this.lblPeligro2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblPeligro2.Image = ((System.Drawing.Image)(resources.GetObject("lblPeligro2.Image")));
-            this.lblPeligro2.Location = new System.Drawing.Point(257, 136);
-            this.lblPeligro2.Name = "lblPeligro2";
-            this.lblPeligro2.Size = new System.Drawing.Size(135, 112);
-            this.lblPeligro2.TabIndex = 11;
-            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -246,21 +219,76 @@
             this.label1.Size = new System.Drawing.Size(576, 172);
             this.label1.TabIndex = 12;
             // 
+            // lblEscudo2
+            // 
+            this.lblEscudo2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblEscudo2.Image = global::PasswordContainer.Properties.Resources.safety_shield_icon_icons_com_72186;
+            this.lblEscudo2.Location = new System.Drawing.Point(679, 127);
+            this.lblEscudo2.Name = "lblEscudo2";
+            this.lblEscudo2.Size = new System.Drawing.Size(142, 140);
+            this.lblEscudo2.TabIndex = 15;
+            // 
+            // lblEscudo
+            // 
+            this.lblEscudo.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblEscudo.Image = global::PasswordContainer.Properties.Resources.safety_shield_icon_icons_com_72186;
+            this.lblEscudo.Location = new System.Drawing.Point(257, 127);
+            this.lblEscudo.Name = "lblEscudo";
+            this.lblEscudo.Size = new System.Drawing.Size(142, 140);
+            this.lblEscudo.TabIndex = 14;
+            // 
             // btnEncriptar
             // 
+            this.btnEncriptar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEncriptar.Image = global::PasswordContainer.Properties.Resources.candadoCerradoLittle;
             this.btnEncriptar.Location = new System.Drawing.Point(548, 288);
             this.btnEncriptar.Name = "btnEncriptar";
             this.btnEncriptar.Size = new System.Drawing.Size(282, 96);
             this.btnEncriptar.TabIndex = 13;
             this.btnEncriptar.Text = "Encriptar";
+            this.btnEncriptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEncriptar.UseVisualStyleBackColor = true;
             this.btnEncriptar.Click += new System.EventHandler(this.BtnEncriptar_Click);
+            // 
+            // lblPeligro2
+            // 
+            this.lblPeligro2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblPeligro2.Image = ((System.Drawing.Image)(resources.GetObject("lblPeligro2.Image")));
+            this.lblPeligro2.Location = new System.Drawing.Point(257, 136);
+            this.lblPeligro2.Name = "lblPeligro2";
+            this.lblPeligro2.Size = new System.Drawing.Size(135, 112);
+            this.lblPeligro2.TabIndex = 11;
+            // 
+            // lblPeligro
+            // 
+            this.lblPeligro.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblPeligro.Image = ((System.Drawing.Image)(resources.GetObject("lblPeligro.Image")));
+            this.lblPeligro.Location = new System.Drawing.Point(686, 136);
+            this.lblPeligro.Name = "lblPeligro";
+            this.lblPeligro.Size = new System.Drawing.Size(135, 112);
+            this.lblPeligro.TabIndex = 8;
+            this.lblPeligro.MouseHover += new System.EventHandler(this.LblPeligro_MouseHover);
+            // 
+            // btnDesencriptar
+            // 
+            this.btnDesencriptar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesencriptar.Image = global::PasswordContainer.Properties.Resources.candadoAbiertoLittle;
+            this.btnDesencriptar.Location = new System.Drawing.Point(253, 288);
+            this.btnDesencriptar.Name = "btnDesencriptar";
+            this.btnDesencriptar.Size = new System.Drawing.Size(289, 96);
+            this.btnDesencriptar.TabIndex = 7;
+            this.btnDesencriptar.Text = "Desencriptar";
+            this.btnDesencriptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDesencriptar.UseVisualStyleBackColor = true;
+            this.btnDesencriptar.Click += new System.EventHandler(this.BtnDesencriptar_Click);
             // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 430);
+            this.ClientSize = new System.Drawing.Size(861, 403);
+            this.Controls.Add(this.lblEscudo2);
+            this.Controls.Add(this.lblEscudo);
             this.Controls.Add(this.btnEncriptar);
             this.Controls.Add(this.lblPeligro2);
             this.Controls.Add(this.lblPassword);
@@ -311,6 +339,8 @@
         private System.Windows.Forms.Label lblPeligro2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEncriptar;
+        private System.Windows.Forms.Label lblEscudo;
+        private System.Windows.Forms.Label lblEscudo2;
     }
 }
 

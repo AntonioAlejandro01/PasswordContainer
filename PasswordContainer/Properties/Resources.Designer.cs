@@ -63,9 +63,49 @@ namespace PasswordContainer.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap candadoAbiertoLittle {
+            get {
+                object obj = ResourceManager.GetObject("candadoAbiertoLittle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap candadoCerradoLittle {
+            get {
+                object obj = ResourceManager.GetObject("candadoCerradoLittle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconCajaFuerte {
             get {
                 object obj = ResourceManager.GetObject("IconCajaFuerte", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap safety_shield_icon_icons_com_72186 {
+            get {
+                object obj = ResourceManager.GetObject("safety-shield_icon-icons.com_72186", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unlocked_black_padlock_symbol_of_security_tool_icon_icons_com_54445 {
+            get {
+                object obj = ResourceManager.GetObject("unlocked-black-padlock-symbol-of-security-tool_icon-icons.com_54445", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

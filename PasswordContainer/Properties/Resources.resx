@@ -121,4 +121,16 @@
   <data name="IconCajaFuerte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IconCajaFuerte.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="safety-shield_icon-icons.com_72186" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\safety-shield_icon-icons.com_72186.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="unlocked-black-padlock-symbol-of-security-tool_icon-icons.com_54445" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unlocked-black-padlock-symbol-of-security-tool_icon-icons.com_54445.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="candadoAbiertoLittle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\candadoAbiertoLittle.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="candadoCerradoLittle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\candadoCerradoLittle.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

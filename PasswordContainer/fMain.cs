@@ -62,8 +62,12 @@ namespace PasswordContainer
             mostrarCuenta(cuenta);
             lblPeligro.Visible = false;
             lblPeligro2.Visible = false;
+
             lblPassword.UseSystemPasswordChar = true;
             lblUsuario.UseSystemPasswordChar = true;
+
+            lblEscudo.Visible = true;
+            lblEscudo2.Visible = true;
 
         }
 
@@ -97,6 +101,8 @@ namespace PasswordContainer
             lblPassword.UseSystemPasswordChar = false;
             lblPeligro.Visible = true;
             lblPeligro2.Visible = true;
+            lblEscudo.Visible = false;
+            lblEscudo2.Visible = false;
 
         }
 
@@ -179,6 +185,8 @@ namespace PasswordContainer
             lblPassword.UseSystemPasswordChar = true;
             lblPeligro.Visible = false;
             lblPeligro2.Visible = false;
+            lblEscudo.Visible = true;
+            lblEscudo2.Visible = true;
 
         }
     }
