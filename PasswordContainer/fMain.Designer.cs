@@ -48,6 +48,7 @@
             this.lblPassword = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.lnklblUser = new System.Windows.Forms.LinkLabel();
             this.lblEscudo2 = new System.Windows.Forms.Label();
             this.lblEscudo = new System.Windows.Forms.Label();
             this.btnEncriptar = new System.Windows.Forms.Button();
@@ -77,7 +78,7 @@
             this.salirToolStripMenuItem});
             this.menStMain.Location = new System.Drawing.Point(0, 0);
             this.menStMain.Name = "menStMain";
-            this.menStMain.Size = new System.Drawing.Size(861, 29);
+            this.menStMain.Size = new System.Drawing.Size(842, 29);
             this.menStMain.TabIndex = 0;
             this.menStMain.Text = "menuStrip1";
             this.menStMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenStMain_ItemClicked);
@@ -102,6 +103,7 @@
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
             this.modificarToolStripMenuItem.Size = new System.Drawing.Size(88, 25);
             this.modificarToolStripMenuItem.Text = "Modificar";
+            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.Modificar);
             // 
             // guardarCambiosToolStripMenuItem
             // 
@@ -138,40 +140,40 @@
             // lblListado
             // 
             this.lblListado.AutoSize = true;
-            this.lblListado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListado.Location = new System.Drawing.Point(21, 51);
+            this.lblListado.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListado.Location = new System.Drawing.Point(12, 55);
             this.lblListado.Name = "lblListado";
-            this.lblListado.Size = new System.Drawing.Size(118, 25);
+            this.lblListado.Size = new System.Drawing.Size(128, 25);
             this.lblListado.TabIndex = 1;
             this.lblListado.Text = "Listado de ";
             // 
             // listBoxCuentasApp
             // 
             this.listBoxCuentasApp.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.listBoxCuentasApp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxCuentasApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxCuentasApp.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxCuentasApp.FormattingEnabled = true;
-            this.listBoxCuentasApp.ItemHeight = 24;
-            this.listBoxCuentasApp.Location = new System.Drawing.Point(26, 104);
+            this.listBoxCuentasApp.ItemHeight = 23;
+            this.listBoxCuentasApp.Location = new System.Drawing.Point(13, 87);
             this.listBoxCuentasApp.Name = "listBoxCuentasApp";
-            this.listBoxCuentasApp.Size = new System.Drawing.Size(221, 242);
+            this.listBoxCuentasApp.Size = new System.Drawing.Size(235, 234);
             this.listBoxCuentasApp.TabIndex = 2;
             // 
             // btnRecogerCuenta
             // 
-            this.btnRecogerCuenta.Location = new System.Drawing.Point(26, 352);
+            this.btnRecogerCuenta.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecogerCuenta.Location = new System.Drawing.Point(13, 325);
             this.btnRecogerCuenta.Name = "btnRecogerCuenta";
-            this.btnRecogerCuenta.Size = new System.Drawing.Size(221, 32);
+            this.btnRecogerCuenta.Size = new System.Drawing.Size(235, 42);
             this.btnRecogerCuenta.TabIndex = 3;
-            this.btnRecogerCuenta.Text = "Seleccionar";
+            this.btnRecogerCuenta.Text = "Mostrar";
             this.btnRecogerCuenta.UseVisualStyleBackColor = true;
             this.btnRecogerCuenta.Click += new System.EventHandler(this.BtnRecogerCuenta_Click);
             // 
             // lblNombreCuenta
             // 
-            this.lblNombreCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCuenta.Font = new System.Drawing.Font("Verdana", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreCuenta.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblNombreCuenta.Location = new System.Drawing.Point(302, 51);
+            this.lblNombreCuenta.Location = new System.Drawing.Point(303, 34);
             this.lblNombreCuenta.Name = "lblNombreCuenta";
             this.lblNombreCuenta.Size = new System.Drawing.Size(479, 53);
             this.lblNombreCuenta.TabIndex = 4;
@@ -183,7 +185,7 @@
             this.lblUsuario.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(398, 136);
+            this.lblUsuario.Location = new System.Drawing.Point(399, 119);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.ReadOnly = true;
             this.lblUsuario.Size = new System.Drawing.Size(282, 28);
@@ -197,7 +199,7 @@
             this.lblPassword.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(398, 208);
+            this.lblPassword.Location = new System.Drawing.Point(399, 191);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.ReadOnly = true;
             this.lblPassword.Size = new System.Drawing.Size(282, 28);
@@ -213,17 +215,30 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(253, 104);
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(254, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(576, 172);
             this.label1.TabIndex = 12;
             // 
+            // lnklblUser
+            // 
+            this.lnklblUser.AutoSize = true;
+            this.lnklblUser.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnklblUser.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnklblUser.LinkColor = System.Drawing.Color.Red;
+            this.lnklblUser.Location = new System.Drawing.Point(129, 55);
+            this.lnklblUser.Name = "lnklblUser";
+            this.lnklblUser.Size = new System.Drawing.Size(92, 25);
+            this.lnklblUser.TabIndex = 16;
+            this.lnklblUser.TabStop = true;
+            this.lnklblUser.Text = "Usuario";
+            this.lnklblUser.VisitedLinkColor = System.Drawing.Color.Red;
+            // 
             // lblEscudo2
             // 
             this.lblEscudo2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblEscudo2.Image = global::PasswordContainer.Properties.Resources.safety_shield_icon_icons_com_72186;
-            this.lblEscudo2.Location = new System.Drawing.Point(679, 127);
+            this.lblEscudo2.Location = new System.Drawing.Point(680, 110);
             this.lblEscudo2.Name = "lblEscudo2";
             this.lblEscudo2.Size = new System.Drawing.Size(142, 140);
             this.lblEscudo2.TabIndex = 15;
@@ -231,22 +246,22 @@
             // lblEscudo
             // 
             this.lblEscudo.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblEscudo.Image = global::PasswordContainer.Properties.Resources.safety_shield_icon_icons_com_72186;
-            this.lblEscudo.Location = new System.Drawing.Point(257, 127);
+            this.lblEscudo.Location = new System.Drawing.Point(258, 110);
             this.lblEscudo.Name = "lblEscudo";
             this.lblEscudo.Size = new System.Drawing.Size(142, 140);
             this.lblEscudo.TabIndex = 14;
             // 
             // btnEncriptar
             // 
-            this.btnEncriptar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEncriptar.Image = global::PasswordContainer.Properties.Resources.candadoCerradoLittle;
-            this.btnEncriptar.Location = new System.Drawing.Point(548, 288);
+            this.btnEncriptar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEncriptar.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEncriptar.Image = ((System.Drawing.Image)(resources.GetObject("btnEncriptar.Image")));
+            this.btnEncriptar.Location = new System.Drawing.Point(254, 271);
             this.btnEncriptar.Name = "btnEncriptar";
             this.btnEncriptar.Size = new System.Drawing.Size(282, 96);
             this.btnEncriptar.TabIndex = 13;
-            this.btnEncriptar.Text = "Encriptar";
-            this.btnEncriptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEncriptar.Text = "           Ocultar";
+            this.btnEncriptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEncriptar.UseVisualStyleBackColor = true;
             this.btnEncriptar.Click += new System.EventHandler(this.BtnEncriptar_Click);
             // 
@@ -254,7 +269,7 @@
             // 
             this.lblPeligro2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblPeligro2.Image = ((System.Drawing.Image)(resources.GetObject("lblPeligro2.Image")));
-            this.lblPeligro2.Location = new System.Drawing.Point(257, 136);
+            this.lblPeligro2.Location = new System.Drawing.Point(258, 119);
             this.lblPeligro2.Name = "lblPeligro2";
             this.lblPeligro2.Size = new System.Drawing.Size(135, 112);
             this.lblPeligro2.TabIndex = 11;
@@ -263,7 +278,7 @@
             // 
             this.lblPeligro.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblPeligro.Image = ((System.Drawing.Image)(resources.GetObject("lblPeligro.Image")));
-            this.lblPeligro.Location = new System.Drawing.Point(686, 136);
+            this.lblPeligro.Location = new System.Drawing.Point(687, 119);
             this.lblPeligro.Name = "lblPeligro";
             this.lblPeligro.Size = new System.Drawing.Size(135, 112);
             this.lblPeligro.TabIndex = 8;
@@ -271,14 +286,14 @@
             // 
             // btnDesencriptar
             // 
-            this.btnDesencriptar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesencriptar.Image = global::PasswordContainer.Properties.Resources.candadoAbiertoLittle;
-            this.btnDesencriptar.Location = new System.Drawing.Point(253, 288);
+            this.btnDesencriptar.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesencriptar.Image = ((System.Drawing.Image)(resources.GetObject("btnDesencriptar.Image")));
+            this.btnDesencriptar.Location = new System.Drawing.Point(541, 271);
             this.btnDesencriptar.Name = "btnDesencriptar";
             this.btnDesencriptar.Size = new System.Drawing.Size(289, 96);
             this.btnDesencriptar.TabIndex = 7;
-            this.btnDesencriptar.Text = "Desencriptar";
-            this.btnDesencriptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDesencriptar.Text = "Mostrar";
+            this.btnDesencriptar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnDesencriptar.UseVisualStyleBackColor = true;
             this.btnDesencriptar.Click += new System.EventHandler(this.BtnDesencriptar_Click);
             // 
@@ -286,7 +301,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 403);
+            this.ClientSize = new System.Drawing.Size(842, 383);
+            this.Controls.Add(this.lnklblUser);
             this.Controls.Add(this.lblEscudo2);
             this.Controls.Add(this.lblEscudo);
             this.Controls.Add(this.btnEncriptar);
@@ -341,6 +357,7 @@
         private System.Windows.Forms.Button btnEncriptar;
         private System.Windows.Forms.Label lblEscudo;
         private System.Windows.Forms.Label lblEscudo2;
+        private System.Windows.Forms.LinkLabel lnklblUser;
     }
 }
 

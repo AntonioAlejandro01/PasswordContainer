@@ -24,8 +24,14 @@ namespace PasswordContainer
             cuentas = ManejoFicheros.CargarCuentasApp(cuenta);
 
             InitializeComponent();
-            lblListado.Text += cuenta.GetUsuario().getNombreUsuario();
+
+            lnklblUser.Text = cuenta.GetUsuario().getNombreUsuario();
             toolTip1.SetToolTip(lblPeligro,mensajePeligro);
+            lblNombreCuenta.Text = "Nombre de la Cuenta";
+            lblUsuario.Text = "Nombre de usuario";
+            lblPassword.Text = "Contraseña";
+            lblPassword.UseSystemPasswordChar = false;
+            lblUsuario.UseSystemPasswordChar = false;
 
         }
 
@@ -36,25 +42,10 @@ namespace PasswordContainer
             listBoxCuentasApp.DataSource = cuentas.getNombresCuentas();
             lblPeligro.Visible = false;
             lblPeligro2.Visible = false;
-            lblUsuario.Clear();
-            lblPassword.Clear();
             lblUsuario.UseSystemPasswordChar = true;
             lblPassword.UseSystemPasswordChar = true;
         }
 
-  
-
-        private CuentaApp cuentaSeleccionada()
-        {
-            if (cuentas.size() == 0)
-            {
-               
-                return null;
-            }
-            fSeleccionar fSelect = new fSeleccionar(cuentas.GetCuentaApps());
-            fSelect.ShowDialog();
-            return BufferCuentaApp.extraerCuentaApp();
-        }
 
         private void BtnRecogerCuenta_Click(object sender, EventArgs e)
         {
@@ -133,11 +124,20 @@ namespace PasswordContainer
                 MessageBox.Show("No hay ninguna cuenta guardada");
                 return;
             }
-            CuentaApp cuenta = cuentaSeleccionada();
-            mostrarCuenta(cuenta);
+            fConfimarEliminar fSeleccionar = new fConfimarEliminar((string)listBoxCuentasApp.SelectedItem);
+            fSeleccionar.ShowDialog();
+            if (!fSeleccionar.getElimina())
+            {
+                MessageBox.Show("Operación cancelada");
+                return;
+            }
+            fSeleccionar.Close();
+            CuentaApp cuenta = buscarCuenta((string)listBoxCuentasApp.SelectedItem);
             if (cuentas.remove(cuenta))
             {
-                MessageBox.Show("Cuenta eliminada.\nSe muestra a continuacion");
+                MessageBox.Show("Cuenta eliminada.");
+                FMain_Load(null, null);
+                ManejoFicheros.GuardarCuentaApp(this.cuentas, this.cuenta);
             }
             else
             {
@@ -187,6 +187,15 @@ namespace PasswordContainer
             lblPeligro2.Visible = false;
             lblEscudo.Visible = true;
             lblEscudo2.Visible = true;
+
+        }
+
+        private void Modificar(object sender, EventArgs e)
+        {
+
+            fModificar fModificar = new fModificar(buscarCuenta((string)listBoxCuentasApp.SelectedItem));
+            fModificar.ShowDialog();
+
 
         }
     }

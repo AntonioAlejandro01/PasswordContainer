@@ -9,7 +9,7 @@ namespace PasswordContainer
     [Serializable]
     public class Usuario
     {
-        public string nombreUsuario;
+        private string nombreUsuario;
 
         public Usuario(string usuario)
         {

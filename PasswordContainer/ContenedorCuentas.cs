@@ -40,6 +40,13 @@ namespace PasswordContainer
 
             return true;
 
+        r
+
+        }
+        private bool modificar(CuentaApp cuenta,string nombr           if ()
+            {
+
+            }
         }
 
         public CuentaApp[] GetCuentaApps()

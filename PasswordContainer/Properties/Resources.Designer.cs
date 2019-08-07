@@ -63,6 +63,16 @@ namespace PasswordContainer.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _16_122653 {
+            get {
+                object obj = ResourceManager.GetObject("16_122653", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap candadoAbiertoLittle {
             get {
                 object obj = ResourceManager.GetObject("candadoAbiertoLittle", resourceCulture);
@@ -86,6 +96,16 @@ namespace PasswordContainer.Properties {
         internal static System.Drawing.Bitmap IconCajaFuerte {
             get {
                 object obj = ResourceManager.GetObject("IconCajaFuerte", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap peligro {
+            get {
+                object obj = ResourceManager.GetObject("peligro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
