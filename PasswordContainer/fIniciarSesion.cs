@@ -70,5 +70,10 @@ namespace PasswordContainer
 
 
         }
+
+        private void FIniciarSesion_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
