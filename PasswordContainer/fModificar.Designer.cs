@@ -62,18 +62,20 @@
             // 
             // txtUser
             // 
+            this.txtUser.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.Location = new System.Drawing.Point(211, 79);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(238, 20);
+            this.txtUser.Size = new System.Drawing.Size(238, 21);
             this.txtUser.TabIndex = 2;
             // 
             // txtPssword
             // 
             this.txtPssword.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtPssword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPssword.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPssword.Location = new System.Drawing.Point(211, 105);
             this.txtPssword.Name = "txtPssword";
-            this.txtPssword.Size = new System.Drawing.Size(238, 20);
+            this.txtPssword.Size = new System.Drawing.Size(238, 21);
             this.txtPssword.TabIndex = 5;
             // 
             // btnAceptar
@@ -120,9 +122,10 @@
             // 
             // txtNombreCuenta
             // 
+            this.txtNombreCuenta.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreCuenta.Location = new System.Drawing.Point(211, 53);
             this.txtNombreCuenta.Name = "txtNombreCuenta";
-            this.txtNombreCuenta.Size = new System.Drawing.Size(238, 20);
+            this.txtNombreCuenta.Size = new System.Drawing.Size(238, 21);
             this.txtNombreCuenta.TabIndex = 10;
             // 
             // label2

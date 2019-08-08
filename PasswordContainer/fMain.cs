@@ -46,8 +46,7 @@ namespace PasswordContainer
             lblPassword.UseSystemPasswordChar = true;
         }
 
-
-        private void BtnRecogerCuenta_Click(object sender, EventArgs e)
+        private void ListBoxCuentasApp_SelectedIndexChanged(object sender, EventArgs e)
         {
             CuentaApp cuenta = buscarCuenta((string)listBoxCuentasApp.SelectedItem);
             mostrarCuenta(cuenta);
@@ -59,7 +58,6 @@ namespace PasswordContainer
 
             lblEscudo.Visible = true;
             lblEscudo2.Visible = true;
-
         }
 
         private void mostrarCuenta(CuentaApp cuenta)
@@ -192,10 +190,47 @@ namespace PasswordContainer
 
         private void Modificar(object sender, EventArgs e)
         {
+            CuentaApp cuenta = buscarCuenta((string)listBoxCuentasApp.SelectedItem);
+            fModificar fModificar = new fModificar(cuenta);
+            bool valido = false;
+            while (!valido)
+            {
+                fModificar.ShowDialog();
+                if (!fModificar.cambiosAceptados())
+                {
+                    MessageBox.Show("Se cancelo la operacion");
+                    return;
+                }
+                CuentaApp cuentaModificada = BufferCuentaApp.extraerCuentaApp();
+                if (cuenta.Equals(cuentaModificada))
+                {
+                    cuenta.SetUsuario(cuentaModificada.GetUsuario().getNombreUsuario());
+                    cuenta.SetPassword(cuentaModificada.GetPassword());
+                    valido = true;
+                }
+                else if (buscarCuenta(cuentaModificada.NombreCuenta) == null)
+                {
+                    cuenta.NombreCuenta = cuentaModificada.NombreCuenta;
+                    cuenta.SetUsuario(cuentaModificada.GetUsuario().getNombreUsuario());
+                    cuenta.SetPassword(cuentaModificada.GetPassword());
+                    valido = true;
+                }
+                else
+                {
+                    MessageBox.Show("Nombre de cuenta repetido");
+                }
+                FMain_Load(null, null);
+            }
+            
 
-            fModificar fModificar = new fModificar(buscarCuenta((string)listBoxCuentasApp.SelectedItem));
-            fModificar.ShowDialog();
 
+
+
+
+        }
+
+        private void LnklblUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
 
         }
     }

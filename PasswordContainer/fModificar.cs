@@ -18,25 +18,18 @@ namespace PasswordContainer
         public fModificar(CuentaApp cuenta)
         {
             InitializeComponent();
-            if (txtNombreCuenta.Text.Equals(cuenta.NombreCuenta))
-            {
-                txtUser.Text = cuenta.GetUsuario().getNombreUsuario();
-                txtPssword.Text = cuenta.GetPassword();
-                aceptarCambios = false;
-                Close();
-            }
-            //comprobar que no esta repetido
+            txtNombreCuenta.Text = cuenta.NombreCuenta;
+            txtUser.Text = cuenta.GetUsuario().getNombreUsuario();
+            txtPssword.Text = cuenta.GetPassword();
+            
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             aceptarCambios = true;
-            cuentaCambiar.NombreCuenta = txtNombreCuenta.Text;
-            cuentaCambiar.SetUsuario(txtUser.Text);
-            cuentaCambiar.SetUsuario(txtPssword.Text);
-            //comprobar que no este repetida
+            cuentaCambiar = new CuentaApp(txtNombreCuenta.Text,new Usuario(txtUser.Text),new PasswordCuenta(txtPssword.Text));
+            BufferCuentaApp.aniadirCuentaApp(cuentaCambiar);
             Close();
-
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

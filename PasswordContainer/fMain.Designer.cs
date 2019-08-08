@@ -42,7 +42,6 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblListado = new System.Windows.Forms.Label();
             this.listBoxCuentasApp = new System.Windows.Forms.ListBox();
-            this.btnRecogerCuenta = new System.Windows.Forms.Button();
             this.lblNombreCuenta = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.TextBox();
@@ -73,8 +72,8 @@
             this.modificarToolStripMenuItem,
             this.guardarCambiosToolStripMenuItem,
             this.generarDocumentoDeTextoToolStripMenuItem,
-            this.ayudaToolStripMenuItem,
             this.cerrarSesiónToolStripMenuItem,
+            this.ayudaToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.menStMain.Location = new System.Drawing.Point(0, 0);
             this.menStMain.Name = "menStMain";
@@ -141,7 +140,7 @@
             // 
             this.lblListado.AutoSize = true;
             this.lblListado.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListado.Location = new System.Drawing.Point(12, 55);
+            this.lblListado.Location = new System.Drawing.Point(8, 55);
             this.lblListado.Name = "lblListado";
             this.lblListado.Size = new System.Drawing.Size(128, 25);
             this.lblListado.TabIndex = 1;
@@ -155,19 +154,9 @@
             this.listBoxCuentasApp.ItemHeight = 23;
             this.listBoxCuentasApp.Location = new System.Drawing.Point(13, 87);
             this.listBoxCuentasApp.Name = "listBoxCuentasApp";
-            this.listBoxCuentasApp.Size = new System.Drawing.Size(235, 234);
+            this.listBoxCuentasApp.Size = new System.Drawing.Size(235, 280);
             this.listBoxCuentasApp.TabIndex = 2;
-            // 
-            // btnRecogerCuenta
-            // 
-            this.btnRecogerCuenta.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecogerCuenta.Location = new System.Drawing.Point(13, 325);
-            this.btnRecogerCuenta.Name = "btnRecogerCuenta";
-            this.btnRecogerCuenta.Size = new System.Drawing.Size(235, 42);
-            this.btnRecogerCuenta.TabIndex = 3;
-            this.btnRecogerCuenta.Text = "Mostrar";
-            this.btnRecogerCuenta.UseVisualStyleBackColor = true;
-            this.btnRecogerCuenta.Click += new System.EventHandler(this.BtnRecogerCuenta_Click);
+            this.listBoxCuentasApp.SelectedIndexChanged += new System.EventHandler(this.ListBoxCuentasApp_SelectedIndexChanged);
             // 
             // lblNombreCuenta
             // 
@@ -227,17 +216,19 @@
             this.lnklblUser.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnklblUser.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnklblUser.LinkColor = System.Drawing.Color.Red;
-            this.lnklblUser.Location = new System.Drawing.Point(129, 55);
+            this.lnklblUser.Location = new System.Drawing.Point(125, 55);
             this.lnklblUser.Name = "lnklblUser";
             this.lnklblUser.Size = new System.Drawing.Size(92, 25);
             this.lnklblUser.TabIndex = 16;
             this.lnklblUser.TabStop = true;
             this.lnklblUser.Text = "Usuario";
             this.lnklblUser.VisitedLinkColor = System.Drawing.Color.Red;
+            this.lnklblUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnklblUser_LinkClicked);
             // 
             // lblEscudo2
             // 
             this.lblEscudo2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblEscudo2.Image = global::PasswordContainer.Properties.Resources.safety_shield_icon_icons_com_72186;
             this.lblEscudo2.Location = new System.Drawing.Point(680, 110);
             this.lblEscudo2.Name = "lblEscudo2";
             this.lblEscudo2.Size = new System.Drawing.Size(142, 140);
@@ -246,6 +237,7 @@
             // lblEscudo
             // 
             this.lblEscudo.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblEscudo.Image = global::PasswordContainer.Properties.Resources.safety_shield_icon_icons_com_72186;
             this.lblEscudo.Location = new System.Drawing.Point(258, 110);
             this.lblEscudo.Name = "lblEscudo";
             this.lblEscudo.Size = new System.Drawing.Size(142, 140);
@@ -260,7 +252,7 @@
             this.btnEncriptar.Name = "btnEncriptar";
             this.btnEncriptar.Size = new System.Drawing.Size(282, 96);
             this.btnEncriptar.TabIndex = 13;
-            this.btnEncriptar.Text = "           Ocultar";
+            this.btnEncriptar.Text = "       Ocultar";
             this.btnEncriptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEncriptar.UseVisualStyleBackColor = true;
             this.btnEncriptar.Click += new System.EventHandler(this.BtnEncriptar_Click);
@@ -301,7 +293,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 383);
+            this.ClientSize = new System.Drawing.Size(842, 378);
             this.Controls.Add(this.lnklblUser);
             this.Controls.Add(this.lblEscudo2);
             this.Controls.Add(this.lblEscudo);
@@ -312,7 +304,6 @@
             this.Controls.Add(this.lblPeligro);
             this.Controls.Add(this.btnDesencriptar);
             this.Controls.Add(this.lblNombreCuenta);
-            this.Controls.Add(this.btnRecogerCuenta);
             this.Controls.Add(this.listBoxCuentasApp);
             this.Controls.Add(this.lblListado);
             this.Controls.Add(this.menStMain);
@@ -343,7 +334,6 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.Label lblListado;
         private System.Windows.Forms.ListBox listBoxCuentasApp;
-        private System.Windows.Forms.Button btnRecogerCuenta;
         private System.Windows.Forms.Label lblNombreCuenta;
         private System.Windows.Forms.Button btnDesencriptar;
         private System.Windows.Forms.Label lblPeligro;
