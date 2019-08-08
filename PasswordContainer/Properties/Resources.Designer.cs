@@ -113,6 +113,16 @@ namespace PasswordContainer.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Safebox_icon_icons_com_51127 {
+            get {
+                object obj = ResourceManager.GetObject("Safebox_icon-icons.com_51127", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap safety_shield_icon_icons_com_72186 {
             get {
                 object obj = ResourceManager.GetObject("safety-shield_icon-icons.com_72186", resourceCulture);
@@ -126,6 +136,16 @@ namespace PasswordContainer.Properties {
         internal static System.Drawing.Bitmap unlocked_black_padlock_symbol_of_security_tool_icon_icons_com_54445 {
             get {
                 object obj = ResourceManager.GetObject("unlocked-black-padlock-symbol-of-security-tool_icon-icons.com_54445", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Welcome {
+            get {
+                object obj = ResourceManager.GetObject("Welcome", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

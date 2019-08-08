@@ -121,6 +121,9 @@
   <data name="peligro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\peligro.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="16_122653" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\16_122653.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="unlocked-black-padlock-symbol-of-security-tool_icon-icons.com_54445" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unlocked-black-padlock-symbol-of-security-tool_icon-icons.com_54445.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,10 +136,13 @@
   <data name="candadoAbiertoLittle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\candadoAbiertoLittle.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Safebox_icon-icons.com_51127" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Safebox_icon-icons.com_51127.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IconCajaFuerte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IconCajaFuerte.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="16_122653" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\16_122653.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Welcome" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Welcome.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

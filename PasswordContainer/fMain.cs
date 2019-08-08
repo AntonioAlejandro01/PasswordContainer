@@ -13,6 +13,7 @@ namespace PasswordContainer
     public partial class fMain : Form
     {
 
+        private bool sesionIniciada;
         private ContenedorCuentas cuentas;
         private CuentaLoginApp cuenta;
         private static string mensajePeligro = "La información esta a la vista.";
@@ -22,6 +23,7 @@ namespace PasswordContainer
         {
             this.cuenta = cuenta;
             cuentas = ManejoFicheros.CargarCuentasApp(cuenta);
+            sesionIniciada = true;
 
             InitializeComponent();
 
@@ -230,6 +232,30 @@ namespace PasswordContainer
         }
 
         private void LnklblUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void CerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SavesChanges(null, null);
+            sesionIniciada = false;
+            Close();
+
+        }
+
+        public bool sesionEnable()
+        {
+            return sesionIniciada;
+        }
+
+        private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SavesChanges(null,null);
+            Application.Exit();
+        }
+
+        private void AyudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

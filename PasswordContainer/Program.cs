@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace PasswordContainer
 {
@@ -18,34 +19,41 @@ namespace PasswordContainer
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             CrearCarpeta();
             ManejoFicheros.CrearFicheros();
-            int intentos = 5;
-            bool inicioSesion = false;
-            for (int i = 0; i < intentos && !inicioSesion; i++)
+            int intentos;
+            bool inicioSesion;
+            bool sesioniniciada = false;
+            while (!sesioniniciada)
             {
-                
-                if (ObtenerUsuario())
+                user = null;
+                inicioSesion = false;
+                intentos = 5;
+                for (int i = 0; i < intentos && !inicioSesion; i++)
                 {
-                    ManejoFicheros.LoginOnApp(user);
-                    inicioSesion = true;
-                    MessageBox.Show("Sesion iniciada");
 
+                    if (ObtenerUsuario())
+                    {
+                        ManejoFicheros.LoginOnApp(user);
+                        inicioSesion = true;
+                        MessageBox.Show("Sesion iniciada");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Datos no validos");
+                    }
                 }
-                else
+
+                if (!inicioSesion)
                 {
-                    MessageBox.Show("Datos no validos");
+                    MessageBox.Show("Numero de intentos de iniciar sesión cumplidos.\nAdiós.");
+                    return;
                 }
+                fMain fMain = new fMain(user);
+                Application.Run(fMain);
+                sesioniniciada = fMain.sesionEnable();
             }
-
-            if (!inicioSesion)
-            {
-                MessageBox.Show("Numero de intentos de iniciar sesión cumplidos.\nAdiós.");
-                return;
-            }
-
-            Application.Run(new fMain(user));
             
             Application.Exit();
         }
@@ -76,6 +84,8 @@ namespace PasswordContainer
             user = BufferCuentaLogin.ExtraerCuentaLoginApp();
             return true;
         }
+
+
 
 
         
