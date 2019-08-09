@@ -11,7 +11,7 @@ namespace PasswordContainer
     public static class ManejoFicheros
     {
         public static string directorioGeneral = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "/PasswordContainer";
-         private static string fCuentasLoginApp = directorioGeneral + "/loginCounts.pswd";
+         private static string fCuentasLoginApp = directorioGeneral + "/loginAccounts.pswd";
 
         private static string extFicheroApp = ".datw";
        

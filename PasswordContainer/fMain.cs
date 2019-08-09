@@ -40,8 +40,8 @@ namespace PasswordContainer
 
         private void FMain_Load(object sender, EventArgs e)
         {
-            
-            listBoxCuentasApp.DataSource = cuentas.getNombresCuentas();
+
+            recargar();
             lblPeligro.Visible = false;
             lblPeligro2.Visible = false;
             lblUsuario.UseSystemPasswordChar = true;
@@ -60,6 +60,9 @@ namespace PasswordContainer
 
             lblEscudo.Visible = true;
             lblEscudo2.Visible = true;
+
+            btnEncriptar.Enabled = false;
+            btnDesencriptar.Enabled = true;
         }
 
         private void mostrarCuenta(CuentaApp cuenta)
@@ -94,6 +97,8 @@ namespace PasswordContainer
             lblPeligro2.Visible = true;
             lblEscudo.Visible = false;
             lblEscudo2.Visible = false;
+            btnEncriptar.Enabled = true;
+            btnDesencriptar.Enabled = false;
 
         }
 
@@ -113,8 +118,8 @@ namespace PasswordContainer
             }
             cuentas.Add(cuenta);
             MessageBox.Show("Cuenta añadida con exito");
-            FMain_Load(sender,e);
-
+            //FMain_Load(sender,e);
+            recargar();
         }
 
         private void Eliminar(object sender, EventArgs e)
@@ -136,7 +141,8 @@ namespace PasswordContainer
             if (cuentas.remove(cuenta))
             {
                 MessageBox.Show("Cuenta eliminada.");
-                FMain_Load(null, null);
+                //FMain_Load(null, null);
+                recargar();
                 ManejoFicheros.GuardarCuentaApp(this.cuentas, this.cuenta);
             }
             else
@@ -153,7 +159,7 @@ namespace PasswordContainer
 
         private void SavesChanges(object sender, EventArgs e)
         {
-            if (ManejoFicheros.GuardarCuentaApp(cuentas, cuenta))
+            if (save())
             {
                 MessageBox.Show("Se guardo con exito");
             }
@@ -188,6 +194,9 @@ namespace PasswordContainer
             lblEscudo.Visible = true;
             lblEscudo2.Visible = true;
 
+            btnDesencriptar.Enabled = true;
+            btnEncriptar.Enabled = false;
+
         }
 
         private void Modificar(object sender, EventArgs e)
@@ -221,7 +230,8 @@ namespace PasswordContainer
                 {
                     MessageBox.Show("Nombre de cuenta repetido");
                 }
-                FMain_Load(null, null);
+                //FMain_Load(null, null);
+                recargar();
             }
             
 
@@ -233,12 +243,16 @@ namespace PasswordContainer
 
         private void LnklblUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            fMiPefil fMiPefil = new fMiPefil(cuenta);
+            fMiPefil.ShowDialog();
+            fMiPefil.Close();
+            fMiPefil.Dispose();
 
         }
 
         private void CerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SavesChanges(null, null);
+            save();
             sesionIniciada = false;
             Close();
 
@@ -251,13 +265,22 @@ namespace PasswordContainer
 
         private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SavesChanges(null,null);
+            save();
             Application.Exit();
         }
 
         private void AyudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+        private void recargar()
+        {
+            listBoxCuentasApp.DataSource = cuentas.getNombresCuentas();
+        }
+
+        private bool save()
+        {
+            return ManejoFicheros.GuardarCuentaApp(cuentas, cuenta);
         }
     }
 }
