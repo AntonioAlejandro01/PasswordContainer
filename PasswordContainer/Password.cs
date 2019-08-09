@@ -22,6 +22,11 @@ namespace PasswordContainer
             return passwordEncript;
         }
 
+        public virtual void SetPassword(string password)
+        {
+            passwordEncript = encriptar(password);
+        }
+
 
 
 

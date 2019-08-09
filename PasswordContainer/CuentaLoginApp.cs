@@ -23,6 +23,17 @@ namespace PasswordContainer
         {
             return password;
         }
+        public bool SetPassword(string newPassword,PasswordLoginApp oldPassword)
+        {
+            if (GetPassword().Equals(oldPassword))
+            {
+                GetPassword().SetPassword(newPassword);
+                return true;
+            }
+            return false;
+
+        }
+        
 
         public string getFichero()
         {

@@ -60,7 +60,7 @@ namespace PasswordContainer
         {
             finApp = false;
             fRegistrarUsuario fRegistrarUsuario = new fRegistrarUsuario();
-            fRegistrarUsuario.Show();
+            fRegistrarUsuario.ShowDialog();
             CuentaLoginApp cuentaNueva = BufferCuentaLogin.ExtraerCuentaLoginApp();
             if(cuentaNueva == null|| cuentaNueva.getFichero() == null)
             {
