@@ -154,6 +154,8 @@
             this.Name = "fIniciarSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Sesión";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FIniciarSesion_FormClosed);
+            this.Load += new System.EventHandler(this.FIniciarSesion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
