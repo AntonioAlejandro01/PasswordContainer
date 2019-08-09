@@ -43,7 +43,7 @@ namespace PasswordContainer
 
             CuentaApp cuentaApp = (CuentaApp)obj;
 
-            return cuentaApp.NombreCuenta.ToUpper().Equals(NombreCuenta.ToUpper());
+            return cuentaApp.NombreCuenta.Equals(NombreCuenta);
         }
 
         public override int GetHashCode()
