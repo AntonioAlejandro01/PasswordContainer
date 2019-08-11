@@ -28,7 +28,7 @@ namespace PasswordContainer
             if (!Validar.validarCuentaApp(cuenta))
             {
                 txtPassword.Clear();
-                MessageBox.Show("Error al procesar la cuenta.\nAlgunos Campos vacios.");
+                MessageBox.Show("Error al procesar la cuenta.\nAlgunos campos están vacios.");
                 return;
             }
 
