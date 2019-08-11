@@ -10,11 +10,21 @@ namespace PasswordContainer
 {
     public static class ManejoFicheros
     {
-        public static string directorioGeneral = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "/PasswordContainer";
-         private static string fCuentasLoginApp = directorioGeneral + "/loginAccounts.pswd";
+        private static string directorioGeneral = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "/PasswordContainer";
+        private static string fCuentasLoginApp = directorioGeneral + "/loginAccounts.pswd";
+
 
         private static string extFicheroApp = ".datw";
-       
+
+        public static string GetDirectorioGeneral()
+        {
+            return directorioGeneral;
+        }    
+        
+        public static string getPathFicheroCuentasLogin()
+        {
+            return fCuentasLoginApp;
+        }
 
         public static void CrearFicheros()
         { 

@@ -20,6 +20,7 @@ namespace PasswordContainer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             CrearCarpeta();
+            
             ManejoFicheros.CrearFicheros();
             int intentos;
             bool inicioSesion;
@@ -63,11 +64,15 @@ namespace PasswordContainer
          */
         private static void CrearCarpeta()
         {
-            if (Directory.Exists(ManejoFicheros.directorioGeneral)) return;
+            if (Directory.Exists(ManejoFicheros.GetDirectorioGeneral())) return;
 
-            DirectoryInfo Dif = new DirectoryInfo(ManejoFicheros.directorioGeneral);
+            DirectoryInfo Dif = new DirectoryInfo(ManejoFicheros.GetDirectorioGeneral());
             Dif.Create();
             Dif.Attributes = FileAttributes.Hidden;
+            using (FileStream fs = File.Create(ManejoFicheros.getPathFicheroCuentasLogin()))
+            {
+                fs.Close();
+            }
 
         }
 
