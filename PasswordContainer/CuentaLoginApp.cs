@@ -43,12 +43,16 @@ namespace PasswordContainer
         {
             fichero = Convert.ToBase64String(Encoding.Unicode.GetBytes(value));
         }
+        public bool mismoFichero(CuentaLoginApp cuenta)
+        {
+            return cuenta.getFichero().Equals(getFichero());
+        }
 
         public override bool Equals(object obj)
         {
             if (!(obj is CuentaLoginApp)) return false;
             CuentaLoginApp cuenta = (CuentaLoginApp)obj;
-            return cuenta.GetUsuario().getNombreUsuario().Equals(GetUsuario().getNombreUsuario()) && cuenta.GetPassword().Equals(GetPassword());
+            return cuenta.GetUsuario().getNombreUsuario().Equals(GetUsuario().getNombreUsuario());
 
         }
 

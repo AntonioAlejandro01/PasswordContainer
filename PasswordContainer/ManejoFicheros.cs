@@ -10,11 +10,21 @@ namespace PasswordContainer
 {
     public static class ManejoFicheros
     {
-        public static string directorioGeneral = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "/PasswordContainer";
-         private static string fCuentasLoginApp = directorioGeneral + "/loginAccounts.pswd";
+        private static string directorioGeneral = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "/PasswordContainer";
+        private static string fCuentasLoginApp = directorioGeneral + "/loginAccounts.pswd";
+
 
         private static string extFicheroApp = ".datw";
-       
+
+        public static string GetDirectorioGeneral()
+        {
+            return directorioGeneral;
+        }    
+        
+        public static string getPathFicheroCuentasLogin()
+        {
+            return fCuentasLoginApp;
+        }
 
         public static void CrearFicheros()
         { 
@@ -101,12 +111,18 @@ namespace PasswordContainer
             if (existeCuenta(cuenta) != null) return false;
             var cuentas = CargarCuentasLogin();
             cuentas.Add(cuenta);
+            escribirDatosLogin(cuentas);
+            return true;
+           
+        }
+        private static void escribirDatosLogin(List<CuentaLoginApp> cuentas)
+        {
             using (Stream st = File.Open(fCuentasLoginApp, FileMode.OpenOrCreate))
             {
                 var binfor = new BinaryFormatter();
                 binfor.Serialize(st, cuentas);
-                return true;
             }
+
         }
 
 
@@ -180,6 +196,42 @@ namespace PasswordContainer
         }
 
 
+
+        public static  bool saveChangesOnLoginAccount(CuentaLoginApp cuenta)
+        {
+            var cuentas = CargarCuentasLogin();
+            bool encontrado = false;
+            foreach (var item in cuentas)
+            {
+                if (item.mismoFichero(cuenta))
+                {
+                    item.GetUsuario().setNombreUsuario(cuenta.GetUsuario().getNombreUsuario());
+                    item.GetPassword().SetPassword(System.Text.Encoding.Unicode.GetString(Convert.FromBase64String(cuenta.GetPassword().getPassword())));
+                    encontrado = true;
+                }
+            }
+            if (encontrado)
+            {
+                escribirDatosLogin(cuentas);
+                return true;
+
+            }
+            return false;
+
+        }
+        
+
+        public static bool eliminarCuenta(CuentaLoginApp cuenta)
+        {
+            var cuentas = CargarCuentasLogin();
+            if (cuentas.Remove(cuenta))
+            {
+                escribirDatosLogin(cuentas);
+                return true;
+            }
+            return false;
+
+        }
 
 
     }

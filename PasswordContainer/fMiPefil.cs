@@ -14,11 +14,17 @@ namespace PasswordContainer
     {
         private CuentaLoginApp cuenta;
         private bool verificado;
+        private bool isDelete;
         public fMiPefil(CuentaLoginApp cuenta)
         {
             this.cuenta = cuenta;
             verificado = false;
+            isDelete = false;
             InitializeComponent();
+            btnDelete.Visible = false;
+            btnDelete.Enabled = false;
+            txtPassword.Enabled = false;
+            txtUser.Enabled = false;
 
         }
 
@@ -28,9 +34,14 @@ namespace PasswordContainer
             fPassword.ShowDialog();
             if (cuenta.GetPassword().Equals(fPassword.GetPasswordLogin()))
             {
+                txtUser.Enabled = true;
+                txtPassword.Enabled = true;
                 txtUser.Text = cuenta.GetUsuario().getNombreUsuario();
                 txtPassword.Text = System.Text.Encoding.Unicode.GetString(Convert.FromBase64String(cuenta.GetPassword().getPassword()));
                 verificado = true;
+                btnDelete.Enabled = true;
+                btnDelete.Visible = true;
+                
             }
             else
             {
@@ -44,6 +55,15 @@ namespace PasswordContainer
             {
                 cuenta.GetUsuario().setNombreUsuario(txtUser.Text);
                 cuenta.SetPassword(txtPassword.Text, cuenta.GetPassword());
+                if (ManejoFicheros.saveChangesOnLoginAccount(cuenta))
+                {
+                    BufferCuentaLogin.aniadirCuenta(cuenta);
+                    MessageBox.Show("Datos actualizados");
+                }
+                else
+                {
+                    MessageBox.Show("Los datos no se ha actualizado");
+                }
                 Close();
             }
             else
@@ -52,5 +72,28 @@ namespace PasswordContainer
             }
 
         }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Esta seguro de eliminar la cuenta.\nTambien se borraran todos las cuentas registradas a esta. ", "Borrado permanente de la cuenta",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                if (ManejoFicheros.eliminarCuenta(cuenta))
+                {
+                    MessageBox.Show("Se ha borrado correctamente.Se cerrará la sesion");
+                    System.IO.File.Delete(cuenta.getFichero());
+                    isDelete = true;
+                    Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Se cancelo la operacion");
+            }
+        }
+
+        public bool borradoCuenta() { return isDelete; }
     }
 }

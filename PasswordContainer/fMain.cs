@@ -27,7 +27,7 @@ namespace PasswordContainer
 
             InitializeComponent();
 
-            lnklblUser.Text = cuenta.GetUsuario().getNombreUsuario();
+           
             toolTip1.SetToolTip(lblPeligro,mensajePeligro);
             lblNombreCuenta.Text = "Nombre de la Cuenta";
             lblUsuario.Text = "Nombre de usuario";
@@ -42,6 +42,7 @@ namespace PasswordContainer
         {
 
             recargar();
+            lnklblUser.Text = cuenta.GetUsuario().getNombreUsuario();
             lblPeligro.Visible = false;
             lblPeligro2.Visible = false;
             lblUsuario.UseSystemPasswordChar = true;
@@ -245,9 +246,21 @@ namespace PasswordContainer
         {
             fMiPefil fMiPefil = new fMiPefil(cuenta);
             fMiPefil.ShowDialog();
+            if (BufferCuentaLogin.HayCuenta)
+            {
+                cuenta = BufferCuentaLogin.ExtraerCuentaLoginApp();
+            }
+            if (fMiPefil.borradoCuenta())
+            {
+                sesionIniciada = false;
+                fMiPefil.Close();
+                fMiPefil.Dispose();
+                Close();
+
+            }
             fMiPefil.Close();
             fMiPefil.Dispose();
-
+            FMain_Load(null, null);
         }
 
         private void CerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)

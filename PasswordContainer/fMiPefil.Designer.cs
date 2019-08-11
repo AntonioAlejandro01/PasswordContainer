@@ -37,6 +37,7 @@
             this.btnRevelar = new System.Windows.Forms.Button();
             this.btnCambios = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblUser
@@ -113,11 +114,28 @@
             this.label2.Size = new System.Drawing.Size(154, 98);
             this.label2.TabIndex = 6;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatAppearance.BorderSize = 2;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(188, 171);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(133, 25);
+            this.btnDelete.TabIndex = 8;
+            this.btnDelete.Text = "Eliminar Cuenta";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
             // fMiPefil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 207);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnCambios);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnRevelar);
@@ -148,5 +166,6 @@
         private System.Windows.Forms.Button btnRevelar;
         private System.Windows.Forms.Button btnCambios;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
