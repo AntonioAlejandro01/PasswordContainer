@@ -35,7 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSign = new System.Windows.Forms.Button();
-            this.lnkPassOlvidada = new System.Windows.Forms.LinkLabel();
             this.lnkRegistrar = new System.Windows.Forms.LinkLabel();
             this.btnVer = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -93,7 +92,7 @@
             // btnSign
             // 
             this.btnSign.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSign.Location = new System.Drawing.Point(279, 187);
+            this.btnSign.Location = new System.Drawing.Point(257, 187);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(118, 47);
             this.btnSign.TabIndex = 5;
@@ -101,24 +100,12 @@
             this.btnSign.UseVisualStyleBackColor = true;
             this.btnSign.Click += new System.EventHandler(this.BtnSign_Click);
             // 
-            // lnkPassOlvidada
-            // 
-            this.lnkPassOlvidada.AutoSize = true;
-            this.lnkPassOlvidada.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkPassOlvidada.Location = new System.Drawing.Point(129, 155);
-            this.lnkPassOlvidada.Name = "lnkPassOlvidada";
-            this.lnkPassOlvidada.Size = new System.Drawing.Size(110, 13);
-            this.lnkPassOlvidada.TabIndex = 6;
-            this.lnkPassOlvidada.TabStop = true;
-            this.lnkPassOlvidada.Text = "Contraseña olvidada?";
-            this.lnkPassOlvidada.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkPassOlvidada_LinkClicked);
-            // 
             // lnkRegistrar
             // 
             this.lnkRegistrar.AutoSize = true;
             this.lnkRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkRegistrar.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkRegistrar.Location = new System.Drawing.Point(12, 222);
+            this.lnkRegistrar.Location = new System.Drawing.Point(16, 222);
             this.lnkRegistrar.Name = "lnkRegistrar";
             this.lnkRegistrar.Size = new System.Drawing.Size(63, 15);
             this.lnkRegistrar.TabIndex = 7;
@@ -129,7 +116,7 @@
             // btnVer
             // 
             this.btnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVer.Location = new System.Drawing.Point(235, 187);
+            this.btnVer.Location = new System.Drawing.Point(194, 150);
             this.btnVer.Name = "btnVer";
             this.btnVer.Size = new System.Drawing.Size(35, 22);
             this.btnVer.TabIndex = 8;
@@ -140,7 +127,7 @@
             // label4
             // 
             this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
-            this.label4.Location = new System.Drawing.Point(263, 33);
+            this.label4.Location = new System.Drawing.Point(241, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(156, 145);
             this.label4.TabIndex = 9;
@@ -149,10 +136,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 246);
+            this.ClientSize = new System.Drawing.Size(396, 246);
             this.Controls.Add(this.btnVer);
             this.Controls.Add(this.lnkRegistrar);
-            this.Controls.Add(this.lnkPassOlvidada);
             this.Controls.Add(this.btnSign);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -181,7 +167,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSign;
-        private System.Windows.Forms.LinkLabel lnkPassOlvidada;
         private System.Windows.Forms.LinkLabel lnkRegistrar;
         private System.Windows.Forms.Button btnVer;
         private System.Windows.Forms.Label label4;
