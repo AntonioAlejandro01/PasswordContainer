@@ -68,21 +68,21 @@ namespace PasswordContainer
             }
             else
             {
-                MessageBox.Show("No se cambiado nada porque no has introducido la contraseña.Pulsa el botón de \"Mostrar Datos\"");
+                MessageBox.Show("No se ha actualizado porque no has introducido la contraseña.\nPulsa el botón de \"Mostrar Datos\"");
             }
 
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Esta seguro de eliminar la cuenta.\nTambien se borraran todos las cuentas registradas a esta. ", "Borrado permanente de la cuenta",
+            var result = MessageBox.Show("¿Esta seguro de eliminar la cuenta?\nTambién se borrarán todos las cuentas registradas a esta.", "Borrado permanente de la cuenta",
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 if (ManejoFicheros.eliminarCuenta(cuenta))
                 {
-                    MessageBox.Show("Se ha borrado correctamente.Se cerrará la sesion");
+                    MessageBox.Show("Se ha borrado correctamente.\nSe cerrará la sesión");
                     System.IO.File.Delete(cuenta.getFichero());
                     isDelete = true;
                     Close();
@@ -90,7 +90,7 @@ namespace PasswordContainer
             }
             else
             {
-                MessageBox.Show("Se cancelo la operacion");
+                MessageBox.Show("Se canceló la operación");
             }
         }
 

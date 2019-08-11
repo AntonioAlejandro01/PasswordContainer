@@ -16,7 +16,7 @@ namespace PasswordContainer
         private bool sesionIniciada;
         private ContenedorCuentas cuentas;
         private CuentaLoginApp cuenta;
-        private static string mensajePeligro = "La información esta a la vista.";
+        private static string mensajePeligro = "La información está a la vista.";
 
 
         public fMain(CuentaLoginApp cuenta)
@@ -114,7 +114,7 @@ namespace PasswordContainer
             CuentaApp cuenta = BufferCuentaApp.extraerCuentaApp();
             if (cuentas.contains(cuenta))
             {
-                MessageBox.Show("Error la cuenta ya existe");
+                MessageBox.Show("Error.\nLa cuenta ya existe");
                 return;
             }
             cuentas.Add(cuenta);
@@ -141,14 +141,13 @@ namespace PasswordContainer
             CuentaApp cuenta = buscarCuenta((string)listBoxCuentasApp.SelectedItem);
             if (cuentas.remove(cuenta))
             {
-                MessageBox.Show("Cuenta eliminada.");
-                //FMain_Load(null, null);
+                MessageBox.Show("Cuenta eliminada");
                 recargar();
                 ManejoFicheros.GuardarCuentaApp(this.cuentas, this.cuenta);
             }
             else
             {
-                MessageBox.Show("Cuenta No eliminada.");
+                MessageBox.Show("Cuenta no eliminada");
             }
 
         }
@@ -162,11 +161,11 @@ namespace PasswordContainer
         {
             if (save())
             {
-                MessageBox.Show("Se guardo con exito");
+                MessageBox.Show("Se ha guardado con exito");
             }
             else
             {
-                MessageBox.Show("ERROR.Hubo un problema al guardar los datos");
+                MessageBox.Show("Error.\nHubo un problema al guardar los datos");
             }
 
         }
@@ -210,7 +209,7 @@ namespace PasswordContainer
                 fModificar.ShowDialog();
                 if (!fModificar.cambiosAceptados())
                 {
-                    MessageBox.Show("Se cancelo la operacion");
+                    MessageBox.Show("Se canceló la operación");
                     return;
                 }
                 CuentaApp cuentaModificada = BufferCuentaApp.extraerCuentaApp();
@@ -231,7 +230,6 @@ namespace PasswordContainer
                 {
                     MessageBox.Show("Nombre de cuenta repetido");
                 }
-                //FMain_Load(null, null);
                 recargar();
             }
             
