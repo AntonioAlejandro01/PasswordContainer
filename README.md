@@ -1,2 +1,2 @@
-# Passwords Container #
-First project at c# with windows forms
+# Contenedor de Contraseñas #
+Primer Proyecto con lenguaje C# y Widows Forms 2019
